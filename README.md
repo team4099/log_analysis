@@ -3,14 +3,14 @@
 Battery log analysis tools for WPILOG files:
 
 - `battery_health.py` analyzes one or more WPILOG files and produces a summary for each match.
-- `battery_results_app.py` is a Streamlit viewer for browsing a generated `results.json`.
+- `battery_results_app.py` is a Streamlit app for exploring analyzed match logs from a generated `results.json`.
 - `2026vache/results.json` is a checked-in sample dataset that the viewer can open by default, including from GitHub.
 
 ## What Each File Does
 
 - `battery_health.py`: CLI analyzer that estimates battery condition, load severity, brownout behavior, pack current, and subsystem current summaries.
 - `battery_health_config.json`: default analyzer config for telemetry entry names, thresholds, and current-model settings.
-- `battery_results_app.py`: interactive Streamlit app for reviewing all analyzed logs and drilling into a single match.
+- `battery_results_app.py`: interactive Streamlit app for fleet-level review and single-match investigation.
 - `battery_results_app_config.json`: viewer config, including the default GitHub `results.json` URL and display-name mappings.
 - `2026vache/results.json`: sample output from the analyzer for the `2026vache` dataset. Teams can replace this with their own file or upload a different one in the viewer.
 

@@ -667,7 +667,7 @@ def render_selected_log(
         st.bar_chart(p99_view)
 
         st.markdown("**Channels Higher Than Usual In This Match (Same Channel, Same Current Basis)**")
-        st.caption("Green bars are higher-than-median current for that same channel and same current basis. Red bars are lower-than-median.")
+        st.caption("Positive values mean this channel drew more current than its fleet median. Negative values mean it drew less.")
         if subsystem_comparison.empty:
             st.info("No fleet comparison was available for subsystem currents.")
         else:
@@ -697,9 +697,9 @@ def render_selected_log(
 
 
 def main() -> None:
-    st.set_page_config(page_title="Battery Results Inspector", layout="wide")
-    st.title("Battery Results Inspector")
-    st.caption("Inspect `results.json` output from battery health analysis and explain why a log looks weak.")
+    st.set_page_config(page_title="Battery Log Analysis", layout="wide")
+    st.title("Battery Log Analysis")
+    st.caption("Inspect analyzed match logs, compare fleet behavior, and understand why a match looked weak.")
 
     try:
         app_config = load_app_config(DEFAULT_APP_CONFIG_PATH)

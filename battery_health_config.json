@@ -1,0 +1,167 @@
+{
+  "inputs": [],
+  "output_path": null,
+  "output_format": "auto",
+  "jobs": 7,
+  "entries": {
+    "battery_voltage": "/SystemStats/BatteryVoltage",
+    "browned_out": "/SystemStats/BrownedOut",
+    "brownout_voltage": "/SystemStats/BrownoutVoltage",
+    "enabled": "/DriverStation/Enabled"
+  },
+  "thresholds": {
+    "min_enabled_duration_s_for_confidence_note": 5.0,
+    "critical_min_voltage_v": 7.0,
+    "critical_time_below_brownout_s": 0.1,
+    "fallback_voltage": {
+      "poor": {
+        "p05_v": 9.0,
+        "min_v": 8.5
+      },
+      "fair": {
+        "p05_v": 10.0,
+        "min_v": 9.5
+      },
+      "good": {
+        "p05_v": 10.8,
+        "min_v": 10.2
+      }
+    },
+    "resistance": {
+      "min_peak_current_a": 20.0,
+      "excellent_max_mohm": 18.0,
+      "good_max_mohm": 25.0,
+      "fair_max_mohm": 35.0
+    }
+  },
+  "current_model": {
+    "direct_supply_currents": [
+      "/Climb/climbSupplyCurrent",
+      "/Feeder/FeederSupplyCurrentAmps",
+      "/Hopper/hopperSupplyCurrent",
+      "/intake/intakeSupplyCurrentAmps",
+      "/rollers/rollerSupplyCurrentAmps",
+      "/Shooter/ShooterLeaderSupplyCurrent",
+      "/Shooter/ShooterFollowerSupplyCurrent"
+    ],
+    "derived_supply_currents": [
+      {
+        "label": "Drive/Module0/drive",
+        "stator_current": "/Drive/Module0/driveCurrent",
+        "applied_voltage": "/Drive/Module0/driveAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module0/turn",
+        "stator_current": "/Drive/Module0/turnCurrent",
+        "applied_voltage": "/Drive/Module0/turnAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module1/drive",
+        "stator_current": "/Drive/Module1/driveCurrent",
+        "applied_voltage": "/Drive/Module1/driveAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module1/turn",
+        "stator_current": "/Drive/Module1/turnCurrent",
+        "applied_voltage": "/Drive/Module1/turnAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module2/drive",
+        "stator_current": "/Drive/Module2/driveCurrent",
+        "applied_voltage": "/Drive/Module2/driveAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module2/turn",
+        "stator_current": "/Drive/Module2/turnCurrent",
+        "applied_voltage": "/Drive/Module2/turnAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module3/drive",
+        "stator_current": "/Drive/Module3/driveCurrent",
+        "applied_voltage": "/Drive/Module3/driveAppliedVoltage"
+      },
+      {
+        "label": "Drive/Module3/turn",
+        "stator_current": "/Drive/Module3/turnCurrent",
+        "applied_voltage": "/Drive/Module3/turnAppliedVoltage"
+      }
+    ],
+    "subsystem_breakdown_currents": [
+      {
+        "label": "Drive/Module0/drive",
+        "entry": "/Drive/Module0/driveCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module0/turn",
+        "entry": "/Drive/Module0/turnCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module1/drive",
+        "entry": "/Drive/Module1/driveCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module1/turn",
+        "entry": "/Drive/Module1/turnCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module2/drive",
+        "entry": "/Drive/Module2/driveCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module2/turn",
+        "entry": "/Drive/Module2/turnCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module3/drive",
+        "entry": "/Drive/Module3/driveCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "Drive/Module3/turn",
+        "entry": "/Drive/Module3/turnCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "/Climb/climbStatorCurrent",
+        "entry": "/Climb/climbStatorCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "/Feeder/FeederStatorCurrentAmps",
+        "entry": "/Feeder/FeederStatorCurrentAmps",
+        "current_type": "stator"
+      },
+      {
+        "label": "/Hopper/hopperStatorCurrent",
+        "entry": "/Hopper/hopperStatorCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "/intake/intakeStatorCurrentAmps",
+        "entry": "/intake/intakeStatorCurrentAmps",
+        "current_type": "stator"
+      },
+      {
+        "label": "/rollers/rollerStatorCurrentAmps",
+        "entry": "/rollers/rollerStatorCurrentAmps",
+        "current_type": "stator"
+      },
+      {
+        "label": "/Shooter/ShooterLeaderStatorCurrent",
+        "entry": "/Shooter/ShooterLeaderStatorCurrent",
+        "current_type": "stator"
+      },
+      {
+        "label": "/Shooter/ShooterFollowerStatorCurrent",
+        "entry": "/Shooter/ShooterFollowerStatorCurrent",
+        "current_type": "stator"
+      }
+    ]
+  }
+}

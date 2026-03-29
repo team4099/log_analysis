@@ -1,0 +1,80 @@
+{
+  "results_path": "https://raw.githubusercontent.com/team4099/log_analysis/main/2026vache/results.json",
+  "fallback_results_path": "./2026vache/results.json",
+  "comparison_metric": "p99_delta_vs_peer_median",
+  "comparison_top_n": 8,
+  "display_names": {
+    "Drive/Module0/drive": "Module 0 Drive",
+    "Drive/Module0/turn": "Module 0 Turn",
+    "Drive/Module1/drive": "Module 1 Drive",
+    "Drive/Module1/turn": "Module 1 Turn",
+    "Drive/Module2/drive": "Module 2 Drive",
+    "Drive/Module2/turn": "Module 2 Turn",
+    "Drive/Module3/drive": "Module 3 Drive",
+    "Drive/Module3/turn": "Module 3 Turn",
+    "/Shooter/ShooterLeaderStatorCurrent": "Shooter Leader",
+    "/Shooter/ShooterFollowerStatorCurrent": "Shooter Follower",
+    "/Feeder/FeederStatorCurrentAmps": "Feeder",
+    "/Hopper/hopperStatorCurrent": "Hopper",
+    "/rollers/rollerStatorCurrentAmps": "Rollers",
+    "/intake/intakeStatorCurrentAmps": "Intake",
+    "/Climb/climbStatorCurrent": "Climb"
+  },
+  "subsystem_groups": [
+    {
+      "name": "Module 0",
+      "patterns": [
+        "Drive/Module0/drive",
+        "Drive/Module0/turn"
+      ]
+    },
+    {
+      "name": "Module 1",
+      "patterns": [
+        "Drive/Module1/drive",
+        "Drive/Module1/turn"
+      ]
+    },
+    {
+      "name": "Module 2",
+      "patterns": [
+        "Drive/Module2/drive",
+        "Drive/Module2/turn"
+      ]
+    },
+    {
+      "name": "Module 3",
+      "patterns": [
+        "Drive/Module3/drive",
+        "Drive/Module3/turn"
+      ]
+    },
+    {
+      "name": "Shooter",
+      "patterns": [
+        "/Shooter/ShooterLeaderStatorCurrent",
+        "/Shooter/ShooterFollowerStatorCurrent"
+      ]
+    },
+    {
+      "name": "Feed",
+      "patterns": [
+        "/Feeder/FeederStatorCurrentAmps",
+        "/Hopper/hopperStatorCurrent",
+        "/rollers/rollerStatorCurrentAmps"
+      ]
+    },
+    {
+      "name": "Intake",
+      "patterns": [
+        "/intake/intakeStatorCurrentAmps"
+      ]
+    },
+    {
+      "name": "Climb",
+      "patterns": [
+        "/Climb/climbStatorCurrent"
+      ]
+    }
+  ]
+}

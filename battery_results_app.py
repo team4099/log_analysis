@@ -686,12 +686,12 @@ def render_selected_log(
         subsystem_table = subsystem_df.copy()
         subsystem_table["subsystem_display"] = subsystem_table["subsystem"].map(lambda name: display_name(name, app_config))
         st.dataframe(
-            subsystem_table.head(12)[["subsystem_display", "current_type", "source_entry", "family", "p50_a", "p90_a", "p95_a", "p99_a", "peak_a"]],
+            subsystem_table[["subsystem_display", "current_type", "source_entry", "family", "p50_a", "p90_a", "p95_a", "p99_a", "peak_a"]],
             use_container_width=True,
             hide_index=True,
             column_config=subsystem_column_config(),
         )
-        p99_view = subsystem_table.head(12).set_index("subsystem_display")[["p99_a"]]
+        p99_view = subsystem_table.set_index("subsystem_display")[["p99_a"]]
         st.bar_chart(p99_view)
 
         st.markdown("**Channels Higher Than Usual In This Match (Same Channel, Same Current Basis)**")

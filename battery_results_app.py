@@ -757,18 +757,23 @@ def render_selected_log(
         None,
     )
 
-    e1, e2, e3 = st.columns(3)
+    e1, e2, e3, e4 = st.columns(4)
     e1.metric(
+        "Time Under Load",
+        f"{selected['enabled_duration_s']:.1f} s" if pd.notna(selected["enabled_duration_s"]) else "n/a",
+        None,
+    )
+    e2.metric(
         "Min Voltage",
         f"{selected['min_enabled_voltage_v']:.2f} V" if pd.notna(selected["min_enabled_voltage_v"]) else "n/a",
         metric_delta_text(selected["min_enabled_voltage_v"], df["min_enabled_voltage_v"].median()),
     )
-    e2.metric(
+    e3.metric(
         "P99 Pack Current",
         f"{selected['current_p99_a']:.1f} A" if pd.notna(selected["current_p99_a"]) else "n/a",
         metric_delta_text(selected["current_p99_a"], df["current_p99_a"].median()),
     )
-    e3.metric(
+    e4.metric(
         "Effective Resistance",
         f"{selected['internal_resistance_mohm']:.1f} mOhm" if pd.notna(selected["internal_resistance_mohm"]) else "n/a",
         metric_delta_text(selected["internal_resistance_mohm"], df["internal_resistance_mohm"].median(), inverse=True),

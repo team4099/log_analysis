@@ -1,0 +1,2923 @@
+[
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_16-04-29.wpilog",
+    "rating": "Good",
+    "summary": "Estimated effective battery resistance looks healthy.",
+    "battery_condition": "Good",
+    "battery_condition_summary": "Internal resistance looks healthy.",
+    "load_assessment": "Extreme",
+    "load_assessment_summary": "The robot was under unusually heavy current demand.",
+    "dominant_cause": "load",
+    "enabled_duration_s": 13.552556,
+    "resting_voltage_v": 12.303489990234375,
+    "min_enabled_voltage_v": 7.62304931640625,
+    "p05_enabled_voltage_v": 9.286019311523438,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 0,
+    "time_below_brownout_s": 0.0,
+    "time_below_9v_s": 0.342952,
+    "time_below_10v_s": 0.8576590000000001,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": {
+      "p50_a": 61.74056853347717,
+      "p90_a": 128.93073478067518,
+      "p95_a": 160.69835336260536,
+      "p99_a": 200.66833271599486,
+      "peak_a": 257.93782029895124
+    },
+    "subsystem_current_stats": {
+      "/Shooter/ShooterFollowerStatorCurrent": {
+        "p50_a": 8.75,
+        "p90_a": 15.502999999999998,
+        "p95_a": 23.830499999999994,
+        "p99_a": 78.9402,
+        "peak_a": 81.14,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+      },
+      "Drive/Module0/turn": {
+        "p50_a": 4.38,
+        "p90_a": 11.752000000000017,
+        "p95_a": 22.163999999999994,
+        "p99_a": 71.57359999999944,
+        "peak_a": 97.84,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/turnCurrent"
+      },
+      "Drive/Module2/turn": {
+        "p50_a": 0.72,
+        "p90_a": 12.661999999999999,
+        "p95_a": 29.655999999999995,
+        "p99_a": 71.2482,
+        "peak_a": 82.46000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/turnCurrent"
+      },
+      "Drive/Module0/drive": {
+        "p50_a": 4.68,
+        "p90_a": 56.474000000000004,
+        "p95_a": 60.028,
+        "p99_a": 68.2811999999999,
+        "peak_a": 84.38,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/driveCurrent"
+      },
+      "Drive/Module2/drive": {
+        "p50_a": 8.44,
+        "p90_a": 56.88,
+        "p95_a": 59.7,
+        "p99_a": 67.11000000000003,
+        "peak_a": 74.32000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/driveCurrent"
+      },
+      "Drive/Module3/drive": {
+        "p50_a": 5.2,
+        "p90_a": 54.232,
+        "p95_a": 58.232,
+        "p99_a": 65.51919999999996,
+        "peak_a": 70.86,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/driveCurrent"
+      },
+      "Drive/Module1/drive": {
+        "p50_a": 3.16,
+        "p90_a": 48.01,
+        "p95_a": 57.761,
+        "p99_a": 63.85519999999998,
+        "peak_a": 80.8,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/driveCurrent"
+      },
+      "Drive/Module3/turn": {
+        "p50_a": 2.44,
+        "p90_a": 12.416,
+        "p95_a": 21.031999999999968,
+        "p99_a": 61.59359999999985,
+        "peak_a": 92.18,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/turnCurrent"
+      },
+      "/Shooter/ShooterLeaderStatorCurrent": {
+        "p50_a": 8.85,
+        "p90_a": 14.608000000000002,
+        "p95_a": 22.926,
+        "p99_a": 58.483199999999954,
+        "peak_a": 79.98,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+      },
+      "Drive/Module1/turn": {
+        "p50_a": 2.05,
+        "p90_a": 10.996000000000002,
+        "p95_a": 15.072999999999999,
+        "p99_a": 54.70179999999995,
+        "peak_a": 74.02,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/turnCurrent"
+      },
+      "/Feeder/FeederStatorCurrentAmps": {
+        "p50_a": 6.84,
+        "p90_a": 9.952,
+        "p95_a": 16.639999999999983,
+        "p99_a": 48.75519999999993,
+        "peak_a": 60.32,
+        "current_type": "stator",
+        "source_entry": "/Feeder/FeederStatorCurrentAmps"
+      },
+      "/rollers/leaderStatorCurrentAmps": {
+        "p50_a": 9.74,
+        "p90_a": 20.25,
+        "p95_a": 24.715,
+        "p99_a": 30.992,
+        "peak_a": 31.02,
+        "current_type": "stator",
+        "source_entry": "/rollers/leaderStatorCurrentAmps"
+      },
+      "/intake/intakeStatorCurrentAmps": {
+        "p50_a": 4.68,
+        "p90_a": 10.188,
+        "p95_a": 19.263999999999996,
+        "p99_a": 27.234399999999972,
+        "peak_a": 32.06,
+        "current_type": "stator",
+        "source_entry": "/intake/intakeStatorCurrentAmps"
+      },
+      "/Hopper/hopperStatorCurrent": {
+        "p50_a": 6.96,
+        "p90_a": 11.632000000000003,
+        "p95_a": 17.89599999999998,
+        "p99_a": 24.39519999999999,
+        "peak_a": 26.02,
+        "current_type": "stator",
+        "source_entry": "/Hopper/hopperStatorCurrent"
+      },
+      "/rollers/followerStatorCurrentAmps": {
+        "p50_a": 7.359999999999999,
+        "p90_a": 12.690000000000001,
+        "p95_a": 14.695,
+        "p99_a": 18.166,
+        "peak_a": 18.46,
+        "current_type": "stator",
+        "source_entry": "/rollers/followerStatorCurrentAmps"
+      }
+    },
+    "peak_current_a": 257.93782029895124,
+    "internal_resistance_ohm": 0.019887785213580228,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Good",
+        "summary": "Estimated effective battery resistance looks healthy.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 13.552556,
+        "min_enabled_voltage_v": 7.62304931640625,
+        "p05_enabled_voltage_v": 9.286019311523438,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.342952,
+        "time_below_10v_s": 0.8576590000000001,
+        "current_stats": {
+          "p50_a": 61.74056853347717,
+          "p90_a": 128.93073478067518,
+          "p95_a": 160.69835336260536,
+          "p99_a": 200.66833271599486,
+          "peak_a": 257.93782029895124
+        },
+        "subsystem_current_stats": {
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.75,
+            "p90_a": 15.502999999999998,
+            "p95_a": 23.830499999999994,
+            "p99_a": 78.9402,
+            "peak_a": 81.14,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 4.38,
+            "p90_a": 11.752000000000017,
+            "p95_a": 22.163999999999994,
+            "p99_a": 71.57359999999944,
+            "peak_a": 97.84,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 0.72,
+            "p90_a": 12.661999999999999,
+            "p95_a": 29.655999999999995,
+            "p99_a": 71.2482,
+            "peak_a": 82.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 4.68,
+            "p90_a": 56.474000000000004,
+            "p95_a": 60.028,
+            "p99_a": 68.2811999999999,
+            "peak_a": 84.38,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 8.44,
+            "p90_a": 56.88,
+            "p95_a": 59.7,
+            "p99_a": 67.11000000000003,
+            "peak_a": 74.32000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 5.2,
+            "p90_a": 54.232,
+            "p95_a": 58.232,
+            "p99_a": 65.51919999999996,
+            "peak_a": 70.86,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 3.16,
+            "p90_a": 48.01,
+            "p95_a": 57.761,
+            "p99_a": 63.85519999999998,
+            "peak_a": 80.8,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 2.44,
+            "p90_a": 12.416,
+            "p95_a": 21.031999999999968,
+            "p99_a": 61.59359999999985,
+            "peak_a": 92.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.85,
+            "p90_a": 14.608000000000002,
+            "p95_a": 22.926,
+            "p99_a": 58.483199999999954,
+            "peak_a": 79.98,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 2.05,
+            "p90_a": 10.996000000000002,
+            "p95_a": 15.072999999999999,
+            "p99_a": 54.70179999999995,
+            "peak_a": 74.02,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.84,
+            "p90_a": 9.952,
+            "p95_a": 16.639999999999983,
+            "p99_a": 48.75519999999993,
+            "peak_a": 60.32,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 9.74,
+            "p90_a": 20.25,
+            "p95_a": 24.715,
+            "p99_a": 30.992,
+            "peak_a": 31.02,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 4.68,
+            "p90_a": 10.188,
+            "p95_a": 19.263999999999996,
+            "p99_a": 27.234399999999972,
+            "peak_a": 32.06,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 6.96,
+            "p90_a": 11.632000000000003,
+            "p95_a": 17.89599999999998,
+            "p99_a": 24.39519999999999,
+            "peak_a": 26.02,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 7.359999999999999,
+            "p90_a": 12.690000000000001,
+            "p95_a": 14.695,
+            "p99_a": 18.166,
+            "peak_a": 18.46,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 257.93782029895124,
+        "internal_resistance_ohm": 0.019887785213580228
+      },
+      "auto": {
+        "rating": "Good",
+        "summary": "Estimated effective battery resistance looks healthy.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 13.552556,
+        "min_enabled_voltage_v": 7.62304931640625,
+        "p05_enabled_voltage_v": 9.286019311523438,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.342952,
+        "time_below_10v_s": 0.8576590000000001,
+        "current_stats": {
+          "p50_a": 61.74056853347717,
+          "p90_a": 128.93073478067518,
+          "p95_a": 160.69835336260536,
+          "p99_a": 200.66833271599486,
+          "peak_a": 257.93782029895124
+        },
+        "subsystem_current_stats": {
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.75,
+            "p90_a": 15.502999999999998,
+            "p95_a": 23.830499999999994,
+            "p99_a": 78.9402,
+            "peak_a": 81.14,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 4.38,
+            "p90_a": 11.752000000000017,
+            "p95_a": 22.163999999999994,
+            "p99_a": 71.57359999999944,
+            "peak_a": 97.84,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 0.72,
+            "p90_a": 12.661999999999999,
+            "p95_a": 29.655999999999995,
+            "p99_a": 71.2482,
+            "peak_a": 82.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 4.68,
+            "p90_a": 56.474000000000004,
+            "p95_a": 60.028,
+            "p99_a": 68.2811999999999,
+            "peak_a": 84.38,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 8.44,
+            "p90_a": 56.88,
+            "p95_a": 59.7,
+            "p99_a": 67.11000000000003,
+            "peak_a": 74.32000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 5.2,
+            "p90_a": 54.232,
+            "p95_a": 58.232,
+            "p99_a": 65.51919999999996,
+            "peak_a": 70.86,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 3.16,
+            "p90_a": 48.01,
+            "p95_a": 57.761,
+            "p99_a": 63.85519999999998,
+            "peak_a": 80.8,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 2.44,
+            "p90_a": 12.416,
+            "p95_a": 21.031999999999968,
+            "p99_a": 61.59359999999985,
+            "peak_a": 92.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.85,
+            "p90_a": 14.608000000000002,
+            "p95_a": 22.926,
+            "p99_a": 58.483199999999954,
+            "peak_a": 79.98,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 2.05,
+            "p90_a": 10.996000000000002,
+            "p95_a": 15.072999999999999,
+            "p99_a": 54.70179999999995,
+            "peak_a": 74.02,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.84,
+            "p90_a": 9.952,
+            "p95_a": 16.639999999999983,
+            "p99_a": 48.75519999999993,
+            "peak_a": 60.32,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 9.74,
+            "p90_a": 20.25,
+            "p95_a": 24.715,
+            "p99_a": 30.992,
+            "peak_a": 31.02,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 4.68,
+            "p90_a": 10.188,
+            "p95_a": 19.263999999999996,
+            "p99_a": 27.234399999999972,
+            "peak_a": 32.06,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 6.96,
+            "p90_a": 11.632000000000003,
+            "p95_a": 17.89599999999998,
+            "p99_a": 24.39519999999999,
+            "peak_a": 26.02,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 7.359999999999999,
+            "p90_a": 12.690000000000001,
+            "p95_a": 14.695,
+            "p99_a": 18.166,
+            "peak_a": 18.46,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 257.93782029895124,
+        "internal_resistance_ohm": 0.019887785213580228
+      },
+      "teleop": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Fair",
+        "battery_condition_summary": "Resting voltage was only moderate.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      }
+    },
+    "notes": []
+  },
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_18-02-31.wpilog",
+    "rating": "Excellent",
+    "summary": "Estimated effective battery resistance looks very strong.",
+    "battery_condition": "Excellent",
+    "battery_condition_summary": "Internal resistance looks strong.",
+    "load_assessment": "Extreme",
+    "load_assessment_summary": "The robot was under unusually heavy current demand.",
+    "dominant_cause": "load",
+    "enabled_duration_s": 9.854056,
+    "resting_voltage_v": 12.649025878906249,
+    "min_enabled_voltage_v": 8.584267333984375,
+    "p05_enabled_voltage_v": 9.578782446289063,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 0,
+    "time_below_brownout_s": 0.0,
+    "time_below_9v_s": 0.043092,
+    "time_below_10v_s": 1.2447049999999997,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": {
+      "p50_a": 89.7718278284325,
+      "p90_a": 176.44524380269422,
+      "p95_a": 198.36099825016635,
+      "p99_a": 245.89841172452913,
+      "peak_a": 288.72970515303643
+    },
+    "subsystem_current_stats": {
+      "Drive/Module3/turn": {
+        "p50_a": 3.8200000000000003,
+        "p90_a": 16.32,
+        "p95_a": 19.342,
+        "p99_a": 96.93900000000033,
+        "peak_a": 105.64,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/turnCurrent"
+      },
+      "/Shooter/ShooterFollowerStatorCurrent": {
+        "p50_a": 8.59,
+        "p90_a": 9.695,
+        "p95_a": 10.11,
+        "p99_a": 73.32499999999928,
+        "peak_a": 79.97,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+      },
+      "Drive/Module0/drive": {
+        "p50_a": 19.26,
+        "p90_a": 59.064,
+        "p95_a": 60.86799999999999,
+        "p99_a": 69.50720000000001,
+        "peak_a": 71.60000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/driveCurrent"
+      },
+      "Drive/Module3/drive": {
+        "p50_a": 24.02,
+        "p90_a": 60.14,
+        "p95_a": 61.42,
+        "p99_a": 66.65999999999994,
+        "peak_a": 84.46000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/driveCurrent"
+      },
+      "Drive/Module2/drive": {
+        "p50_a": 11.84,
+        "p90_a": 58.46,
+        "p95_a": 59.94,
+        "p99_a": 66.36799999999995,
+        "peak_a": 86.38,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/driveCurrent"
+      },
+      "Drive/Module2/turn": {
+        "p50_a": 2.12,
+        "p90_a": 12.076000000000022,
+        "p95_a": 24.45800000000001,
+        "p99_a": 61.63660000000006,
+        "peak_a": 109.10000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/turnCurrent"
+      },
+      "Drive/Module1/drive": {
+        "p50_a": 8.9,
+        "p90_a": 36.29200000000001,
+        "p95_a": 45.044,
+        "p99_a": 60.71079999999998,
+        "peak_a": 84.46000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/driveCurrent"
+      },
+      "Drive/Module1/turn": {
+        "p50_a": 1.6400000000000001,
+        "p90_a": 8.5,
+        "p95_a": 13.440000000000001,
+        "p99_a": 58.29399999999988,
+        "peak_a": 92.18,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/turnCurrent"
+      },
+      "/Shooter/ShooterLeaderStatorCurrent": {
+        "p50_a": 8.74,
+        "p90_a": 9.912,
+        "p95_a": 10.786000000000001,
+        "p99_a": 53.81279999999983,
+        "peak_a": 79.82000000000001,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+      },
+      "Drive/Module0/turn": {
+        "p50_a": 2.92,
+        "p90_a": 12.4,
+        "p95_a": 18.22,
+        "p99_a": 53.16199999999988,
+        "peak_a": 90.46000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/turnCurrent"
+      },
+      "/rollers/leaderStatorCurrentAmps": {
+        "p50_a": 22.22,
+        "p90_a": 41.504,
+        "p95_a": 47.22599999999999,
+        "p99_a": 49.9184,
+        "peak_a": 50.0,
+        "current_type": "stator",
+        "source_entry": "/rollers/leaderStatorCurrentAmps"
+      },
+      "/rollers/followerStatorCurrentAmps": {
+        "p50_a": 25.080000000000002,
+        "p90_a": 39.42,
+        "p95_a": 42.05399999999999,
+        "p99_a": 45.5264,
+        "peak_a": 45.88,
+        "current_type": "stator",
+        "source_entry": "/rollers/followerStatorCurrentAmps"
+      },
+      "/intake/intakeStatorCurrentAmps": {
+        "p50_a": 0.6,
+        "p90_a": 4.140000000000008,
+        "p95_a": 7.60600000000002,
+        "p99_a": 31.934799999999953,
+        "peak_a": 38.980000000000004,
+        "current_type": "stator",
+        "source_entry": "/intake/intakeStatorCurrentAmps"
+      },
+      "/Feeder/FeederStatorCurrentAmps": {
+        "p50_a": 6.279999999999999,
+        "p90_a": 7.890000000000001,
+        "p95_a": 8.079999999999998,
+        "p99_a": 19.810400000000044,
+        "peak_a": 26.5,
+        "current_type": "stator",
+        "source_entry": "/Feeder/FeederStatorCurrentAmps"
+      },
+      "/Hopper/hopperStatorCurrent": {
+        "p50_a": -0.01,
+        "p90_a": 0.0,
+        "p95_a": 0.0,
+        "p99_a": 0.0,
+        "peak_a": 0.0,
+        "current_type": "stator",
+        "source_entry": "/Hopper/hopperStatorCurrent"
+      }
+    },
+    "peak_current_a": 288.72970515303643,
+    "internal_resistance_ohm": 0.017436844552248733,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Excellent",
+        "summary": "Estimated effective battery resistance looks very strong.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 9.854056,
+        "min_enabled_voltage_v": 8.584267333984375,
+        "p05_enabled_voltage_v": 9.578782446289063,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.043092,
+        "time_below_10v_s": 1.2447049999999997,
+        "current_stats": {
+          "p50_a": 89.7718278284325,
+          "p90_a": 176.44524380269422,
+          "p95_a": 198.36099825016635,
+          "p99_a": 245.89841172452913,
+          "peak_a": 288.72970515303643
+        },
+        "subsystem_current_stats": {
+          "Drive/Module3/turn": {
+            "p50_a": 3.8200000000000003,
+            "p90_a": 16.32,
+            "p95_a": 19.342,
+            "p99_a": 96.93900000000033,
+            "peak_a": 105.64,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.59,
+            "p90_a": 9.695,
+            "p95_a": 10.11,
+            "p99_a": 73.32499999999928,
+            "peak_a": 79.97,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 19.26,
+            "p90_a": 59.064,
+            "p95_a": 60.86799999999999,
+            "p99_a": 69.50720000000001,
+            "peak_a": 71.60000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 24.02,
+            "p90_a": 60.14,
+            "p95_a": 61.42,
+            "p99_a": 66.65999999999994,
+            "peak_a": 84.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 11.84,
+            "p90_a": 58.46,
+            "p95_a": 59.94,
+            "p99_a": 66.36799999999995,
+            "peak_a": 86.38,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 2.12,
+            "p90_a": 12.076000000000022,
+            "p95_a": 24.45800000000001,
+            "p99_a": 61.63660000000006,
+            "peak_a": 109.10000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 8.9,
+            "p90_a": 36.29200000000001,
+            "p95_a": 45.044,
+            "p99_a": 60.71079999999998,
+            "peak_a": 84.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 1.6400000000000001,
+            "p90_a": 8.5,
+            "p95_a": 13.440000000000001,
+            "p99_a": 58.29399999999988,
+            "peak_a": 92.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.74,
+            "p90_a": 9.912,
+            "p95_a": 10.786000000000001,
+            "p99_a": 53.81279999999983,
+            "peak_a": 79.82000000000001,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 2.92,
+            "p90_a": 12.4,
+            "p95_a": 18.22,
+            "p99_a": 53.16199999999988,
+            "peak_a": 90.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 22.22,
+            "p90_a": 41.504,
+            "p95_a": 47.22599999999999,
+            "p99_a": 49.9184,
+            "peak_a": 50.0,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 25.080000000000002,
+            "p90_a": 39.42,
+            "p95_a": 42.05399999999999,
+            "p99_a": 45.5264,
+            "peak_a": 45.88,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          },
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 0.6,
+            "p90_a": 4.140000000000008,
+            "p95_a": 7.60600000000002,
+            "p99_a": 31.934799999999953,
+            "peak_a": 38.980000000000004,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.279999999999999,
+            "p90_a": 7.890000000000001,
+            "p95_a": 8.079999999999998,
+            "p99_a": 19.810400000000044,
+            "peak_a": 26.5,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": -0.01,
+            "p90_a": 0.0,
+            "p95_a": 0.0,
+            "p99_a": 0.0,
+            "peak_a": 0.0,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          }
+        },
+        "peak_current_a": 288.72970515303643,
+        "internal_resistance_ohm": 0.017436844552248733
+      },
+      "auto": {
+        "rating": "Excellent",
+        "summary": "Estimated effective battery resistance looks very strong.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 9.854056,
+        "min_enabled_voltage_v": 8.584267333984375,
+        "p05_enabled_voltage_v": 9.578782446289063,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.043092,
+        "time_below_10v_s": 1.2447049999999997,
+        "current_stats": {
+          "p50_a": 89.7718278284325,
+          "p90_a": 176.44524380269422,
+          "p95_a": 198.36099825016635,
+          "p99_a": 245.89841172452913,
+          "peak_a": 288.72970515303643
+        },
+        "subsystem_current_stats": {
+          "Drive/Module3/turn": {
+            "p50_a": 3.8200000000000003,
+            "p90_a": 16.32,
+            "p95_a": 19.342,
+            "p99_a": 96.93900000000033,
+            "peak_a": 105.64,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.59,
+            "p90_a": 9.695,
+            "p95_a": 10.11,
+            "p99_a": 73.32499999999928,
+            "peak_a": 79.97,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 19.26,
+            "p90_a": 59.064,
+            "p95_a": 60.86799999999999,
+            "p99_a": 69.50720000000001,
+            "peak_a": 71.60000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 24.02,
+            "p90_a": 60.14,
+            "p95_a": 61.42,
+            "p99_a": 66.65999999999994,
+            "peak_a": 84.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 11.84,
+            "p90_a": 58.46,
+            "p95_a": 59.94,
+            "p99_a": 66.36799999999995,
+            "peak_a": 86.38,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 2.12,
+            "p90_a": 12.076000000000022,
+            "p95_a": 24.45800000000001,
+            "p99_a": 61.63660000000006,
+            "peak_a": 109.10000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 8.9,
+            "p90_a": 36.29200000000001,
+            "p95_a": 45.044,
+            "p99_a": 60.71079999999998,
+            "peak_a": 84.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 1.6400000000000001,
+            "p90_a": 8.5,
+            "p95_a": 13.440000000000001,
+            "p99_a": 58.29399999999988,
+            "peak_a": 92.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.74,
+            "p90_a": 9.912,
+            "p95_a": 10.786000000000001,
+            "p99_a": 53.81279999999983,
+            "peak_a": 79.82000000000001,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 2.92,
+            "p90_a": 12.4,
+            "p95_a": 18.22,
+            "p99_a": 53.16199999999988,
+            "peak_a": 90.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 22.22,
+            "p90_a": 41.504,
+            "p95_a": 47.22599999999999,
+            "p99_a": 49.9184,
+            "peak_a": 50.0,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 25.080000000000002,
+            "p90_a": 39.42,
+            "p95_a": 42.05399999999999,
+            "p99_a": 45.5264,
+            "peak_a": 45.88,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          },
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 0.6,
+            "p90_a": 4.140000000000008,
+            "p95_a": 7.60600000000002,
+            "p99_a": 31.934799999999953,
+            "peak_a": 38.980000000000004,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.279999999999999,
+            "p90_a": 7.890000000000001,
+            "p95_a": 8.079999999999998,
+            "p99_a": 19.810400000000044,
+            "peak_a": 26.5,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": -0.01,
+            "p90_a": 0.0,
+            "p95_a": 0.0,
+            "p99_a": 0.0,
+            "peak_a": 0.0,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          }
+        },
+        "peak_current_a": 288.72970515303643,
+        "internal_resistance_ohm": 0.017436844552248733
+      },
+      "teleop": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Resting voltage looked healthy.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      }
+    },
+    "notes": []
+  },
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_20-03-25.wpilog",
+    "rating": "Critical",
+    "summary": "Battery hit or crossed the brownout region under load.",
+    "battery_condition": "Good",
+    "battery_condition_summary": "Internal resistance looks healthy.",
+    "load_assessment": "Extreme",
+    "load_assessment_summary": "The robot was under unusually heavy current demand.",
+    "dominant_cause": "load",
+    "enabled_duration_s": 1502.146297,
+    "resting_voltage_v": 12.655308349609374,
+    "min_enabled_voltage_v": 6.59272412109375,
+    "p05_enabled_voltage_v": 8.75892001953125,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 9,
+    "time_below_brownout_s": 0.097313,
+    "time_below_9v_s": 25.167461999999954,
+    "time_below_10v_s": 63.21245299999989,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": {
+      "p50_a": 34.57869423037613,
+      "p90_a": 148.91051303647825,
+      "p95_a": 188.90826261372325,
+      "p99_a": 247.02113588933372,
+      "peak_a": 361.376647559661
+    },
+    "subsystem_current_stats": {
+      "/intake/intakeStatorCurrentAmps": {
+        "p50_a": 1.6,
+        "p90_a": 14.46,
+        "p95_a": 27.545,
+        "p99_a": 89.7899999999998,
+        "peak_a": 124.7,
+        "current_type": "stator",
+        "source_entry": "/intake/intakeStatorCurrentAmps"
+      },
+      "/Shooter/ShooterLeaderStatorCurrent": {
+        "p50_a": 8.46,
+        "p90_a": 14.124000000000006,
+        "p95_a": 22.107999999999993,
+        "p99_a": 69.99920000000006,
+        "peak_a": 81.8,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+      },
+      "Drive/Module2/drive": {
+        "p50_a": 3.44,
+        "p90_a": 58.34,
+        "p95_a": 60.38,
+        "p99_a": 67.26,
+        "peak_a": 141.58,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/driveCurrent"
+      },
+      "Drive/Module0/drive": {
+        "p50_a": 3.98,
+        "p90_a": 58.28,
+        "p95_a": 60.52,
+        "p99_a": 67.16,
+        "peak_a": 112.16,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/driveCurrent"
+      },
+      "Drive/Module1/drive": {
+        "p50_a": 2.18,
+        "p90_a": 57.1,
+        "p95_a": 60.06,
+        "p99_a": 66.915,
+        "peak_a": 131.74,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/driveCurrent"
+      },
+      "Drive/Module3/drive": {
+        "p50_a": 1.54,
+        "p90_a": 57.84,
+        "p95_a": 60.04,
+        "p99_a": 66.08,
+        "peak_a": 111.18,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/driveCurrent"
+      },
+      "/Feeder/FeederStatorCurrentAmps": {
+        "p50_a": 6.24,
+        "p90_a": 12.532000000000004,
+        "p95_a": 31.281999999999968,
+        "p99_a": 53.72600000000001,
+        "peak_a": 84.86,
+        "current_type": "stator",
+        "source_entry": "/Feeder/FeederStatorCurrentAmps"
+      },
+      "/Hopper/hopperStatorCurrent": {
+        "p50_a": 6.94,
+        "p90_a": 23.06,
+        "p95_a": 33.09,
+        "p99_a": 49.01199999999997,
+        "peak_a": 58.52,
+        "current_type": "stator",
+        "source_entry": "/Hopper/hopperStatorCurrent"
+      },
+      "Drive/Module0/turn": {
+        "p50_a": 1.68,
+        "p90_a": 10.14,
+        "p95_a": 13.82,
+        "p99_a": 45.92019999999997,
+        "peak_a": 124.82000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/turnCurrent"
+      },
+      "Drive/Module1/turn": {
+        "p50_a": 1.36,
+        "p90_a": 9.864000000000015,
+        "p95_a": 14.3,
+        "p99_a": 45.57199999999895,
+        "peak_a": 129.96,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/turnCurrent"
+      },
+      "Drive/Module2/turn": {
+        "p50_a": 1.32,
+        "p90_a": 9.74,
+        "p95_a": 13.34,
+        "p99_a": 44.72520000000004,
+        "peak_a": 132.26,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/turnCurrent"
+      },
+      "/rollers/leaderStatorCurrentAmps": {
+        "p50_a": 16.5,
+        "p90_a": 40.106,
+        "p95_a": 41.766,
+        "p99_a": 44.46,
+        "peak_a": 48.620000000000005,
+        "current_type": "stator",
+        "source_entry": "/rollers/leaderStatorCurrentAmps"
+      },
+      "Drive/Module3/turn": {
+        "p50_a": 1.68,
+        "p90_a": 10.02,
+        "p95_a": 13.82,
+        "p99_a": 42.98720000000016,
+        "peak_a": 118.66,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/turnCurrent"
+      },
+      "/rollers/followerStatorCurrentAmps": {
+        "p50_a": 16.58,
+        "p90_a": 38.424,
+        "p95_a": 40.144999999999996,
+        "p99_a": 42.8882,
+        "peak_a": 47.26,
+        "current_type": "stator",
+        "source_entry": "/rollers/followerStatorCurrentAmps"
+      },
+      "/Shooter/ShooterFollowerStatorCurrent": {
+        "p50_a": 8.44,
+        "p90_a": 10.03,
+        "p95_a": 19.44099999999999,
+        "p99_a": 35.156299999999945,
+        "peak_a": 80.63,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+      }
+    },
+    "peak_current_a": 361.376647559661,
+    "internal_resistance_ohm": 0.019736647217878055,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Critical",
+        "summary": "Battery hit or crossed the brownout region under load.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 1502.146297,
+        "min_enabled_voltage_v": 6.59272412109375,
+        "p05_enabled_voltage_v": 8.75892001953125,
+        "brownout_events": 9,
+        "time_below_brownout_s": 0.097313,
+        "time_below_9v_s": 25.167461999999954,
+        "time_below_10v_s": 63.21245299999989,
+        "current_stats": {
+          "p50_a": 34.57869423037613,
+          "p90_a": 148.91051303647825,
+          "p95_a": 188.90826261372325,
+          "p99_a": 247.02113588933372,
+          "peak_a": 361.376647559661
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 1.6,
+            "p90_a": 14.46,
+            "p95_a": 27.545,
+            "p99_a": 89.7899999999998,
+            "peak_a": 124.7,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.46,
+            "p90_a": 14.124000000000006,
+            "p95_a": 22.107999999999993,
+            "p99_a": 69.99920000000006,
+            "peak_a": 81.8,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 3.44,
+            "p90_a": 58.34,
+            "p95_a": 60.38,
+            "p99_a": 67.26,
+            "peak_a": 141.58,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 3.98,
+            "p90_a": 58.28,
+            "p95_a": 60.52,
+            "p99_a": 67.16,
+            "peak_a": 112.16,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 2.18,
+            "p90_a": 57.1,
+            "p95_a": 60.06,
+            "p99_a": 66.915,
+            "peak_a": 131.74,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 1.54,
+            "p90_a": 57.84,
+            "p95_a": 60.04,
+            "p99_a": 66.08,
+            "peak_a": 111.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.24,
+            "p90_a": 12.532000000000004,
+            "p95_a": 31.281999999999968,
+            "p99_a": 53.72600000000001,
+            "peak_a": 84.86,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 6.94,
+            "p90_a": 23.06,
+            "p95_a": 33.09,
+            "p99_a": 49.01199999999997,
+            "peak_a": 58.52,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 1.68,
+            "p90_a": 10.14,
+            "p95_a": 13.82,
+            "p99_a": 45.92019999999997,
+            "peak_a": 124.82000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 1.36,
+            "p90_a": 9.864000000000015,
+            "p95_a": 14.3,
+            "p99_a": 45.57199999999895,
+            "peak_a": 129.96,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 1.32,
+            "p90_a": 9.74,
+            "p95_a": 13.34,
+            "p99_a": 44.72520000000004,
+            "peak_a": 132.26,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 16.5,
+            "p90_a": 40.106,
+            "p95_a": 41.766,
+            "p99_a": 44.46,
+            "peak_a": 48.620000000000005,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 1.68,
+            "p90_a": 10.02,
+            "p95_a": 13.82,
+            "p99_a": 42.98720000000016,
+            "peak_a": 118.66,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 16.58,
+            "p90_a": 38.424,
+            "p95_a": 40.144999999999996,
+            "p99_a": 42.8882,
+            "peak_a": 47.26,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.44,
+            "p90_a": 10.03,
+            "p95_a": 19.44099999999999,
+            "p99_a": 35.156299999999945,
+            "peak_a": 80.63,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          }
+        },
+        "peak_current_a": 361.376647559661,
+        "internal_resistance_ohm": 0.019736647217878055
+      },
+      "auto": {
+        "rating": "Excellent",
+        "summary": "Estimated effective battery resistance looks very strong.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 379.593659,
+        "min_enabled_voltage_v": 9.488943115234374,
+        "p05_enabled_voltage_v": 11.460382421875,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.08796299999999999,
+        "current_stats": {
+          "p50_a": 13.655000000000001,
+          "p90_a": 52.38030539554128,
+          "p95_a": 79.82144897157934,
+          "p99_a": 154.45317733810327,
+          "peak_a": 219.21522205886515
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 2.44,
+            "p90_a": 28.50999999999999,
+            "p95_a": 62.879,
+            "p99_a": 120.81280000000001,
+            "peak_a": 120.98,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 0.3,
+            "p90_a": 0.54,
+            "p95_a": 26.223999999999997,
+            "p99_a": 60.78240000000005,
+            "peak_a": 72.36,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 0.32,
+            "p90_a": 0.56,
+            "p95_a": 5.395999999999986,
+            "p99_a": 58.271999999999984,
+            "peak_a": 67.82000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": -0.26,
+            "p90_a": 0.42,
+            "p95_a": 7.4350000000000005,
+            "p99_a": 56.182999999999964,
+            "peak_a": 62.120000000000005,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": -0.32,
+            "p90_a": 0.58,
+            "p95_a": 19.385999999999996,
+            "p99_a": 41.58879999999999,
+            "peak_a": 63.7,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 8.26,
+            "p90_a": 25.484000000000005,
+            "p95_a": 32.971999999999994,
+            "p99_a": 38.9624,
+            "peak_a": 40.46,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 7.78,
+            "p90_a": 19.316000000000003,
+            "p95_a": 23.227999999999994,
+            "p99_a": 26.357599999999998,
+            "peak_a": 27.14,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 5.5600000000000005,
+            "p90_a": 7.148000000000001,
+            "p95_a": 7.459,
+            "p99_a": 11.4506,
+            "peak_a": 11.98,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.47,
+            "p90_a": 9.253,
+            "p95_a": 9.5765,
+            "p99_a": 10.98,
+            "peak_a": 15.3,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.46,
+            "p90_a": 9.272,
+            "p95_a": 9.863999999999997,
+            "p99_a": 10.8672,
+            "peak_a": 12.32,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": -0.2,
+            "p90_a": -0.02,
+            "p95_a": 5.852000000000007,
+            "p99_a": 10.603999999999996,
+            "peak_a": 89.54,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 0.24,
+            "p90_a": 0.46,
+            "p95_a": 3.4839999999999964,
+            "p99_a": 10.21519999999995,
+            "peak_a": 46.84,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 0.0,
+            "p90_a": 0.3,
+            "p95_a": 2.377999999999997,
+            "p99_a": 9.391599999999903,
+            "peak_a": 77.24,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": -0.28,
+            "p90_a": -0.06,
+            "p95_a": 3.4570000000000025,
+            "p99_a": 8.773000000000005,
+            "peak_a": 113.86,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 0.02,
+            "p90_a": 0.036000000000000004,
+            "p95_a": 0.038,
+            "p99_a": 0.0396,
+            "peak_a": 0.04,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          }
+        },
+        "peak_current_a": 219.21522205886515,
+        "internal_resistance_ohm": 0.015401724072655363
+      },
+      "teleop": {
+        "rating": "Critical",
+        "summary": "Battery hit or crossed the brownout region under load.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 1416.273783,
+        "min_enabled_voltage_v": 6.59272412109375,
+        "p05_enabled_voltage_v": 8.697351806640624,
+        "brownout_events": 9,
+        "time_below_brownout_s": 0.097313,
+        "time_below_9v_s": 25.167461999999954,
+        "time_below_10v_s": 63.124489999999895,
+        "current_stats": {
+          "p50_a": 37.402567397377226,
+          "p90_a": 151.76213202852637,
+          "p95_a": 190.92908531961902,
+          "p99_a": 248.45651567037072,
+          "peak_a": 361.376647559661
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 1.44,
+            "p90_a": 13.641999999999994,
+            "p95_a": 25.48,
+            "p99_a": 86.05239999999998,
+            "peak_a": 124.7,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.46,
+            "p90_a": 14.514000000000001,
+            "p95_a": 22.674999999999994,
+            "p99_a": 70.72979999999998,
+            "peak_a": 81.8,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 6.18,
+            "p90_a": 58.52,
+            "p95_a": 60.570999999999984,
+            "p99_a": 67.58960000000022,
+            "peak_a": 141.58,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 7.0200000000000005,
+            "p90_a": 58.42,
+            "p95_a": 60.72,
+            "p99_a": 67.46400000000003,
+            "peak_a": 112.16,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 3.6,
+            "p90_a": 57.46,
+            "p95_a": 60.26,
+            "p99_a": 67.22300000000003,
+            "peak_a": 131.74,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 2.8000000000000003,
+            "p90_a": 58.06,
+            "p95_a": 60.2,
+            "p99_a": 66.31039999999993,
+            "peak_a": 111.18,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.3,
+            "p90_a": 13.487999999999989,
+            "p95_a": 32.527999999999984,
+            "p99_a": 53.7816,
+            "peak_a": 84.86,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 7.0200000000000005,
+            "p90_a": 23.095999999999997,
+            "p95_a": 33.11599999999999,
+            "p99_a": 49.059199999999926,
+            "peak_a": 58.52,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 1.92,
+            "p90_a": 10.36,
+            "p95_a": 14.280000000000001,
+            "p99_a": 47.37879999999998,
+            "peak_a": 124.82000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 1.5,
+            "p90_a": 10.120000000000001,
+            "p95_a": 14.774000000000015,
+            "p99_a": 47.19479999999945,
+            "peak_a": 129.96,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 1.62,
+            "p90_a": 9.96,
+            "p95_a": 13.755999999999986,
+            "p99_a": 45.23519999999997,
+            "peak_a": 132.26,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 16.98,
+            "p90_a": 40.104,
+            "p95_a": 41.784,
+            "p99_a": 44.46,
+            "peak_a": 48.620000000000005,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 1.92,
+            "p90_a": 10.24,
+            "p95_a": 14.200000000000001,
+            "p99_a": 44.21600000000006,
+            "peak_a": 118.66,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.44,
+            "p90_a": 10.91,
+            "p95_a": 20.2,
+            "p99_a": 43.10589999999982,
+            "peak_a": 80.63,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 16.66,
+            "p90_a": 38.5,
+            "p95_a": 40.27999999999999,
+            "p99_a": 42.93680000000001,
+            "peak_a": 47.26,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 361.376647559661,
+        "internal_resistance_ohm": 0.019857982648262277
+      }
+    },
+    "notes": []
+  },
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_20-33-23.wpilog",
+    "rating": "Critical",
+    "summary": "Battery hit or crossed the brownout region under load.",
+    "battery_condition": "Excellent",
+    "battery_condition_summary": "Internal resistance looks strong.",
+    "load_assessment": "Extreme",
+    "load_assessment_summary": "The robot was under unusually heavy current demand.",
+    "dominant_cause": "load",
+    "enabled_duration_s": 501.052955,
+    "resting_voltage_v": 12.039626220703125,
+    "min_enabled_voltage_v": 6.8817177734375,
+    "p05_enabled_voltage_v": 8.427205566406249,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 2,
+    "time_below_brownout_s": 0.0,
+    "time_below_9v_s": 28.16435599999998,
+    "time_below_10v_s": 71.7843379999998,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": {
+      "p50_a": 75.56889432837683,
+      "p90_a": 193.62860545181312,
+      "p95_a": 217.95128987362565,
+      "p99_a": 259.5996197378752,
+      "peak_a": 316.88069548998106
+    },
+    "subsystem_current_stats": {
+      "/intake/intakeStatorCurrentAmps": {
+        "p50_a": 7.29,
+        "p90_a": 24.544000000000008,
+        "p95_a": 37.31799999999998,
+        "p99_a": 110.23480000000035,
+        "peak_a": 122.54,
+        "current_type": "stator",
+        "source_entry": "/intake/intakeStatorCurrentAmps"
+      },
+      "/Shooter/ShooterLeaderStatorCurrent": {
+        "p50_a": 8.52,
+        "p90_a": 18.81200000000001,
+        "p95_a": 25.060999999999993,
+        "p99_a": 72.49079999999925,
+        "peak_a": 80.14,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+      },
+      "Drive/Module1/drive": {
+        "p50_a": 10.6,
+        "p90_a": 59.884000000000015,
+        "p95_a": 62.24,
+        "p99_a": 71.80439999999999,
+        "peak_a": 145.70000000000002,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/driveCurrent"
+      },
+      "Drive/Module0/drive": {
+        "p50_a": 14.36,
+        "p90_a": 60.120000000000005,
+        "p95_a": 62.56,
+        "p99_a": 71.05320000000007,
+        "peak_a": 143.02,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/driveCurrent"
+      },
+      "Drive/Module2/drive": {
+        "p50_a": 18.02,
+        "p90_a": 60.68,
+        "p95_a": 62.73899999999998,
+        "p99_a": 70.60319999999993,
+        "peak_a": 119.4,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/driveCurrent"
+      },
+      "Drive/Module3/drive": {
+        "p50_a": 11.22,
+        "p90_a": 59.96,
+        "p95_a": 62.160000000000004,
+        "p99_a": 69.35040000000001,
+        "peak_a": 99.72,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/driveCurrent"
+      },
+      "Drive/Module0/turn": {
+        "p50_a": 4.7,
+        "p90_a": 12.18,
+        "p95_a": 19.780000000000037,
+        "p99_a": 68.90879999999997,
+        "peak_a": 132.56,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/turnCurrent"
+      },
+      "/Shooter/ShooterFollowerStatorCurrent": {
+        "p50_a": 8.52,
+        "p90_a": 18.68,
+        "p95_a": 24.00049999999999,
+        "p99_a": 62.7083000000006,
+        "peak_a": 81.23,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+      },
+      "/Feeder/FeederStatorCurrentAmps": {
+        "p50_a": 6.42,
+        "p90_a": 29.8,
+        "p95_a": 39.1,
+        "p99_a": 59.416999999999966,
+        "peak_a": 105.16,
+        "current_type": "stator",
+        "source_entry": "/Feeder/FeederStatorCurrentAmps"
+      },
+      "/Hopper/hopperStatorCurrent": {
+        "p50_a": 7.11,
+        "p90_a": 27.83,
+        "p95_a": 39.644999999999996,
+        "p99_a": 56.195,
+        "peak_a": 60.56,
+        "current_type": "stator",
+        "source_entry": "/Hopper/hopperStatorCurrent"
+      },
+      "Drive/Module1/turn": {
+        "p50_a": 3.36,
+        "p90_a": 11.56,
+        "p95_a": 17.06,
+        "p99_a": 53.49,
+        "peak_a": 114.3,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/turnCurrent"
+      },
+      "Drive/Module2/turn": {
+        "p50_a": 4.42,
+        "p90_a": 11.44,
+        "p95_a": 17.522000000000006,
+        "p99_a": 52.86160000000003,
+        "peak_a": 125.74000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/turnCurrent"
+      },
+      "Drive/Module3/turn": {
+        "p50_a": 5.14,
+        "p90_a": 11.84,
+        "p95_a": 17.823999999999977,
+        "p99_a": 50.17039999999994,
+        "peak_a": 120.76,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/turnCurrent"
+      },
+      "/rollers/leaderStatorCurrentAmps": {
+        "p50_a": 18.32,
+        "p90_a": 40.42,
+        "p95_a": 41.772,
+        "p99_a": 45.14999999999998,
+        "peak_a": 47.5,
+        "current_type": "stator",
+        "source_entry": "/rollers/leaderStatorCurrentAmps"
+      },
+      "/rollers/followerStatorCurrentAmps": {
+        "p50_a": 17.29,
+        "p90_a": 38.152,
+        "p95_a": 40.303,
+        "p99_a": 42.12,
+        "peak_a": 43.38,
+        "current_type": "stator",
+        "source_entry": "/rollers/followerStatorCurrentAmps"
+      }
+    },
+    "peak_current_a": 316.88069548998106,
+    "internal_resistance_ohm": 0.01737440084281641,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Critical",
+        "summary": "Battery hit or crossed the brownout region under load.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 501.052955,
+        "min_enabled_voltage_v": 6.8817177734375,
+        "p05_enabled_voltage_v": 8.427205566406249,
+        "brownout_events": 2,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 28.16435599999998,
+        "time_below_10v_s": 71.7843379999998,
+        "current_stats": {
+          "p50_a": 75.56889432837683,
+          "p90_a": 193.62860545181312,
+          "p95_a": 217.95128987362565,
+          "p99_a": 259.5996197378752,
+          "peak_a": 316.88069548998106
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 7.29,
+            "p90_a": 24.544000000000008,
+            "p95_a": 37.31799999999998,
+            "p99_a": 110.23480000000035,
+            "peak_a": 122.54,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.52,
+            "p90_a": 18.81200000000001,
+            "p95_a": 25.060999999999993,
+            "p99_a": 72.49079999999925,
+            "peak_a": 80.14,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 10.6,
+            "p90_a": 59.884000000000015,
+            "p95_a": 62.24,
+            "p99_a": 71.80439999999999,
+            "peak_a": 145.70000000000002,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 14.36,
+            "p90_a": 60.120000000000005,
+            "p95_a": 62.56,
+            "p99_a": 71.05320000000007,
+            "peak_a": 143.02,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 18.02,
+            "p90_a": 60.68,
+            "p95_a": 62.73899999999998,
+            "p99_a": 70.60319999999993,
+            "peak_a": 119.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 11.22,
+            "p90_a": 59.96,
+            "p95_a": 62.160000000000004,
+            "p99_a": 69.35040000000001,
+            "peak_a": 99.72,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 4.7,
+            "p90_a": 12.18,
+            "p95_a": 19.780000000000037,
+            "p99_a": 68.90879999999997,
+            "peak_a": 132.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.52,
+            "p90_a": 18.68,
+            "p95_a": 24.00049999999999,
+            "p99_a": 62.7083000000006,
+            "peak_a": 81.23,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.42,
+            "p90_a": 29.8,
+            "p95_a": 39.1,
+            "p99_a": 59.416999999999966,
+            "peak_a": 105.16,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 7.11,
+            "p90_a": 27.83,
+            "p95_a": 39.644999999999996,
+            "p99_a": 56.195,
+            "peak_a": 60.56,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 3.36,
+            "p90_a": 11.56,
+            "p95_a": 17.06,
+            "p99_a": 53.49,
+            "peak_a": 114.3,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 4.42,
+            "p90_a": 11.44,
+            "p95_a": 17.522000000000006,
+            "p99_a": 52.86160000000003,
+            "peak_a": 125.74000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 5.14,
+            "p90_a": 11.84,
+            "p95_a": 17.823999999999977,
+            "p99_a": 50.17039999999994,
+            "peak_a": 120.76,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 18.32,
+            "p90_a": 40.42,
+            "p95_a": 41.772,
+            "p99_a": 45.14999999999998,
+            "peak_a": 47.5,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 17.29,
+            "p90_a": 38.152,
+            "p95_a": 40.303,
+            "p99_a": 42.12,
+            "peak_a": 43.38,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 316.88069548998106,
+        "internal_resistance_ohm": 0.01737440084281641
+      },
+      "auto": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Poor",
+        "battery_condition_summary": "Resting voltage was low before or between load events.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      },
+      "teleop": {
+        "rating": "Critical",
+        "summary": "Battery hit or crossed the brownout region under load.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 501.052955,
+        "min_enabled_voltage_v": 6.8817177734375,
+        "p05_enabled_voltage_v": 8.427205566406249,
+        "brownout_events": 2,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 28.16435599999998,
+        "time_below_10v_s": 71.7843379999998,
+        "current_stats": {
+          "p50_a": 75.56889432837683,
+          "p90_a": 193.62860545181312,
+          "p95_a": 217.95128987362565,
+          "p99_a": 259.5996197378752,
+          "peak_a": 316.88069548998106
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 7.29,
+            "p90_a": 24.544000000000008,
+            "p95_a": 37.31799999999998,
+            "p99_a": 110.23480000000035,
+            "peak_a": 122.54,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.52,
+            "p90_a": 18.81200000000001,
+            "p95_a": 25.060999999999993,
+            "p99_a": 72.49079999999925,
+            "peak_a": 80.14,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 10.6,
+            "p90_a": 59.884000000000015,
+            "p95_a": 62.24,
+            "p99_a": 71.80439999999999,
+            "peak_a": 145.70000000000002,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 14.36,
+            "p90_a": 60.120000000000005,
+            "p95_a": 62.56,
+            "p99_a": 71.05320000000007,
+            "peak_a": 143.02,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 18.02,
+            "p90_a": 60.68,
+            "p95_a": 62.73899999999998,
+            "p99_a": 70.60319999999993,
+            "peak_a": 119.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 11.22,
+            "p90_a": 59.96,
+            "p95_a": 62.160000000000004,
+            "p99_a": 69.35040000000001,
+            "peak_a": 99.72,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 4.7,
+            "p90_a": 12.18,
+            "p95_a": 19.780000000000037,
+            "p99_a": 68.90879999999997,
+            "peak_a": 132.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.52,
+            "p90_a": 18.68,
+            "p95_a": 24.00049999999999,
+            "p99_a": 62.7083000000006,
+            "peak_a": 81.23,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.42,
+            "p90_a": 29.8,
+            "p95_a": 39.1,
+            "p99_a": 59.416999999999966,
+            "peak_a": 105.16,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 7.11,
+            "p90_a": 27.83,
+            "p95_a": 39.644999999999996,
+            "p99_a": 56.195,
+            "peak_a": 60.56,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 3.36,
+            "p90_a": 11.56,
+            "p95_a": 17.06,
+            "p99_a": 53.49,
+            "peak_a": 114.3,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 4.42,
+            "p90_a": 11.44,
+            "p95_a": 17.522000000000006,
+            "p99_a": 52.86160000000003,
+            "peak_a": 125.74000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 5.14,
+            "p90_a": 11.84,
+            "p95_a": 17.823999999999977,
+            "p99_a": 50.17039999999994,
+            "peak_a": 120.76,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 18.32,
+            "p90_a": 40.42,
+            "p95_a": 41.772,
+            "p99_a": 45.14999999999998,
+            "peak_a": 47.5,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 17.29,
+            "p90_a": 38.152,
+            "p95_a": 40.303,
+            "p99_a": 42.12,
+            "peak_a": 43.38,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 316.88069548998106,
+        "internal_resistance_ohm": 0.01737440084281641
+      }
+    },
+    "notes": []
+  },
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_21-17-16.wpilog",
+    "rating": "Good",
+    "summary": "Estimated effective battery resistance looks healthy.",
+    "battery_condition": "Good",
+    "battery_condition_summary": "Internal resistance looks healthy.",
+    "load_assessment": "Extreme",
+    "load_assessment_summary": "The robot was under unusually heavy current demand.",
+    "dominant_cause": "load",
+    "enabled_duration_s": 994.153916,
+    "resting_voltage_v": 12.73698046875,
+    "min_enabled_voltage_v": 7.553942138671875,
+    "p05_enabled_voltage_v": 9.1936669921875,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 0,
+    "time_below_brownout_s": 0.0,
+    "time_below_9v_s": 6.879301999999998,
+    "time_below_10v_s": 31.947093999999982,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": {
+      "p50_a": 49.727298534029075,
+      "p90_a": 172.37367569302594,
+      "p95_a": 201.3618274887573,
+      "p99_a": 246.70412244255598,
+      "peak_a": 344.27862995259386
+    },
+    "subsystem_current_stats": {
+      "/intake/intakeStatorCurrentAmps": {
+        "p50_a": 2.2800000000000002,
+        "p90_a": 31.58800000000001,
+        "p95_a": 71.43400000000018,
+        "p99_a": 120.2112,
+        "peak_a": 125.12,
+        "current_type": "stator",
+        "source_entry": "/intake/intakeStatorCurrentAmps"
+      },
+      "/Shooter/ShooterLeaderStatorCurrent": {
+        "p50_a": 8.4,
+        "p90_a": 19.68,
+        "p95_a": 29.26,
+        "p99_a": 79.696,
+        "peak_a": 80.26,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+      },
+      "/Shooter/ShooterFollowerStatorCurrent": {
+        "p50_a": 8.33,
+        "p90_a": 17.72,
+        "p95_a": 24.975,
+        "p99_a": 79.319,
+        "peak_a": 81.02,
+        "current_type": "stator",
+        "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+      },
+      "/Feeder/FeederStatorCurrentAmps": {
+        "p50_a": 6.36,
+        "p90_a": 23.796000000000003,
+        "p95_a": 41.73399999999981,
+        "p99_a": 71.25559999999996,
+        "peak_a": 85.2,
+        "current_type": "stator",
+        "source_entry": "/Feeder/FeederStatorCurrentAmps"
+      },
+      "Drive/Module2/drive": {
+        "p50_a": 0.34,
+        "p90_a": 59.58400000000001,
+        "p95_a": 61.83199999999997,
+        "p99_a": 70.71280000000006,
+        "peak_a": 133.56,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/driveCurrent"
+      },
+      "Drive/Module0/drive": {
+        "p50_a": 0.28,
+        "p90_a": 58.9,
+        "p95_a": 61.300000000000004,
+        "p99_a": 70.70800000000004,
+        "peak_a": 140.96,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/driveCurrent"
+      },
+      "Drive/Module3/drive": {
+        "p50_a": 0.3,
+        "p90_a": 58.6,
+        "p95_a": 60.980000000000004,
+        "p99_a": 69.08219999999994,
+        "peak_a": 135.56,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/driveCurrent"
+      },
+      "Drive/Module1/drive": {
+        "p50_a": 0.4,
+        "p90_a": 58.5,
+        "p95_a": 61.26,
+        "p99_a": 68.8664,
+        "peak_a": 128.68,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/driveCurrent"
+      },
+      "Drive/Module0/turn": {
+        "p50_a": 1.8800000000000001,
+        "p90_a": 10.802000000000008,
+        "p95_a": 16.38,
+        "p99_a": 59.56040000000001,
+        "peak_a": 124.4,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module0/turnCurrent"
+      },
+      "Drive/Module1/turn": {
+        "p50_a": 2.3000000000000003,
+        "p90_a": 10.78,
+        "p95_a": 16.125,
+        "p99_a": 57.985,
+        "peak_a": 124.36,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module1/turnCurrent"
+      },
+      "Drive/Module2/turn": {
+        "p50_a": 5.18,
+        "p90_a": 11.08,
+        "p95_a": 16.740000000000002,
+        "p99_a": 53.36440000000017,
+        "peak_a": 127.46000000000001,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module2/turnCurrent"
+      },
+      "Drive/Module3/turn": {
+        "p50_a": 2.84,
+        "p90_a": 10.18,
+        "p95_a": 14.98,
+        "p99_a": 52.035999999999696,
+        "peak_a": 122.56,
+        "current_type": "stator",
+        "source_entry": "/Drive/Module3/turnCurrent"
+      },
+      "/Hopper/hopperStatorCurrent": {
+        "p50_a": 0.04,
+        "p90_a": 23.552,
+        "p95_a": 34.626,
+        "p99_a": 51.870399999999925,
+        "peak_a": 58.08,
+        "current_type": "stator",
+        "source_entry": "/Hopper/hopperStatorCurrent"
+      },
+      "/rollers/leaderStatorCurrentAmps": {
+        "p50_a": 9.040000000000001,
+        "p90_a": 38.508,
+        "p95_a": 39.767999999999994,
+        "p99_a": 47.547199999999975,
+        "peak_a": 49.76,
+        "current_type": "stator",
+        "source_entry": "/rollers/leaderStatorCurrentAmps"
+      },
+      "/rollers/followerStatorCurrentAmps": {
+        "p50_a": 8.850000000000001,
+        "p90_a": 32.002,
+        "p95_a": 35.143,
+        "p99_a": 41.47740000000001,
+        "peak_a": 43.7,
+        "current_type": "stator",
+        "source_entry": "/rollers/followerStatorCurrentAmps"
+      }
+    },
+    "peak_current_a": 344.27862995259386,
+    "internal_resistance_ohm": 0.018548909863296104,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Good",
+        "summary": "Estimated effective battery resistance looks healthy.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 994.153916,
+        "min_enabled_voltage_v": 7.553942138671875,
+        "p05_enabled_voltage_v": 9.1936669921875,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 6.879301999999998,
+        "time_below_10v_s": 31.947093999999982,
+        "current_stats": {
+          "p50_a": 49.727298534029075,
+          "p90_a": 172.37367569302594,
+          "p95_a": 201.3618274887573,
+          "p99_a": 246.70412244255598,
+          "peak_a": 344.27862995259386
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 2.2800000000000002,
+            "p90_a": 31.58800000000001,
+            "p95_a": 71.43400000000018,
+            "p99_a": 120.2112,
+            "peak_a": 125.12,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.4,
+            "p90_a": 19.68,
+            "p95_a": 29.26,
+            "p99_a": 79.696,
+            "peak_a": 80.26,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.33,
+            "p90_a": 17.72,
+            "p95_a": 24.975,
+            "p99_a": 79.319,
+            "peak_a": 81.02,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.36,
+            "p90_a": 23.796000000000003,
+            "p95_a": 41.73399999999981,
+            "p99_a": 71.25559999999996,
+            "peak_a": 85.2,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 0.34,
+            "p90_a": 59.58400000000001,
+            "p95_a": 61.83199999999997,
+            "p99_a": 70.71280000000006,
+            "peak_a": 133.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 0.28,
+            "p90_a": 58.9,
+            "p95_a": 61.300000000000004,
+            "p99_a": 70.70800000000004,
+            "peak_a": 140.96,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 0.3,
+            "p90_a": 58.6,
+            "p95_a": 60.980000000000004,
+            "p99_a": 69.08219999999994,
+            "peak_a": 135.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 0.4,
+            "p90_a": 58.5,
+            "p95_a": 61.26,
+            "p99_a": 68.8664,
+            "peak_a": 128.68,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 1.8800000000000001,
+            "p90_a": 10.802000000000008,
+            "p95_a": 16.38,
+            "p99_a": 59.56040000000001,
+            "peak_a": 124.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 2.3000000000000003,
+            "p90_a": 10.78,
+            "p95_a": 16.125,
+            "p99_a": 57.985,
+            "peak_a": 124.36,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 5.18,
+            "p90_a": 11.08,
+            "p95_a": 16.740000000000002,
+            "p99_a": 53.36440000000017,
+            "peak_a": 127.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 2.84,
+            "p90_a": 10.18,
+            "p95_a": 14.98,
+            "p99_a": 52.035999999999696,
+            "peak_a": 122.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 0.04,
+            "p90_a": 23.552,
+            "p95_a": 34.626,
+            "p99_a": 51.870399999999925,
+            "peak_a": 58.08,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 9.040000000000001,
+            "p90_a": 38.508,
+            "p95_a": 39.767999999999994,
+            "p99_a": 47.547199999999975,
+            "peak_a": 49.76,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 8.850000000000001,
+            "p90_a": 32.002,
+            "p95_a": 35.143,
+            "p99_a": 41.47740000000001,
+            "peak_a": 43.7,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 344.27862995259386,
+        "internal_resistance_ohm": 0.018548909863296104
+      },
+      "auto": {
+        "rating": "Excellent",
+        "summary": "Estimated effective battery resistance looks very strong.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Internal resistance looks strong.",
+        "load_assessment": "High",
+        "load_assessment_summary": "The robot saw high current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 99.187666,
+        "min_enabled_voltage_v": 11.882564453125,
+        "p05_enabled_voltage_v": 12.404009521484374,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": {
+          "p50_a": 13.73,
+          "p90_a": 14.489999999999998,
+          "p95_a": 27.1,
+          "p99_a": 48.92,
+          "peak_a": 52.565
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 1.26,
+            "p90_a": 1.42,
+            "p95_a": 77.935,
+            "p99_a": 94.04600000000003,
+            "peak_a": 96.96000000000001,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 5.82,
+            "p90_a": 6.724,
+            "p95_a": 7.453999999999986,
+            "p99_a": 20.238000000000003,
+            "peak_a": 24.3,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.21,
+            "p90_a": 8.85,
+            "p95_a": 9.03,
+            "p99_a": 9.394200000000001,
+            "peak_a": 13.24,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.24,
+            "p90_a": 8.788,
+            "p95_a": 8.888,
+            "p99_a": 9.2664,
+            "peak_a": 9.72,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 0.38,
+            "p90_a": 0.56,
+            "p95_a": 0.58,
+            "p99_a": 0.66,
+            "peak_a": 0.88,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": -0.3,
+            "p90_a": -0.14,
+            "p95_a": -0.06,
+            "p99_a": 0.46,
+            "peak_a": 7.42,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 0.04,
+            "p90_a": 0.32,
+            "p95_a": 0.36,
+            "p99_a": 0.46,
+            "peak_a": 0.72,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 0.14,
+            "p90_a": 0.28,
+            "p95_a": 0.3209999999999991,
+            "p99_a": 0.44,
+            "peak_a": 12.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 0.08,
+            "p90_a": 0.28,
+            "p95_a": 0.32,
+            "p99_a": 0.38,
+            "peak_a": 0.46,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 0.08,
+            "p90_a": 0.22,
+            "p95_a": 0.26,
+            "p99_a": 0.32,
+            "peak_a": 0.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": -0.18,
+            "p90_a": -0.04,
+            "p95_a": -0.02,
+            "p99_a": 0.14,
+            "peak_a": 0.6,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 0.0,
+            "p90_a": 0.068,
+            "p95_a": 0.08399999999999999,
+            "p99_a": 0.0968,
+            "peak_a": 0.1,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": -0.3,
+            "p90_a": -0.14,
+            "p95_a": -0.1,
+            "p99_a": -0.04,
+            "peak_a": -0.02,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          }
+        },
+        "peak_current_a": 52.565,
+        "internal_resistance_ohm": 0.012391901231659588
+      },
+      "teleop": {
+        "rating": "Good",
+        "summary": "Estimated effective battery resistance looks healthy.",
+        "battery_condition": "Good",
+        "battery_condition_summary": "Internal resistance looks healthy.",
+        "load_assessment": "Extreme",
+        "load_assessment_summary": "The robot was under unusually heavy current demand.",
+        "dominant_cause": "load",
+        "enabled_duration_s": 994.153916,
+        "min_enabled_voltage_v": 7.553942138671875,
+        "p05_enabled_voltage_v": 9.11827734375,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 6.879301999999998,
+        "time_below_10v_s": 31.947093999999982,
+        "current_stats": {
+          "p50_a": 62.06752634605325,
+          "p90_a": 178.35782444373893,
+          "p95_a": 205.66945470260112,
+          "p99_a": 249.62953633307458,
+          "peak_a": 344.27862995259386
+        },
+        "subsystem_current_stats": {
+          "/intake/intakeStatorCurrentAmps": {
+            "p50_a": 3.72,
+            "p90_a": 33.3,
+            "p95_a": 68.34,
+            "p99_a": 120.39999999999999,
+            "peak_a": 125.12,
+            "current_type": "stator",
+            "source_entry": "/intake/intakeStatorCurrentAmps"
+          },
+          "/Shooter/ShooterLeaderStatorCurrent": {
+            "p50_a": 8.42,
+            "p90_a": 21.714,
+            "p95_a": 32.8979999999998,
+            "p99_a": 79.7474,
+            "peak_a": 80.26,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterLeaderStatorCurrent"
+          },
+          "/Shooter/ShooterFollowerStatorCurrent": {
+            "p50_a": 8.35,
+            "p90_a": 19.36,
+            "p95_a": 25.965,
+            "p99_a": 79.46700000000001,
+            "peak_a": 81.02,
+            "current_type": "stator",
+            "source_entry": "/Shooter/ShooterFollowerStatorCurrent"
+          },
+          "/Feeder/FeederStatorCurrentAmps": {
+            "p50_a": 6.470000000000001,
+            "p90_a": 28.97600000000003,
+            "p95_a": 45.698999999999984,
+            "p99_a": 72.52339999999991,
+            "peak_a": 85.2,
+            "current_type": "stator",
+            "source_entry": "/Feeder/FeederStatorCurrentAmps"
+          },
+          "Drive/Module0/drive": {
+            "p50_a": 0.62,
+            "p90_a": 59.36200000000001,
+            "p95_a": 61.92,
+            "p99_a": 72.06339999999993,
+            "peak_a": 140.96,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/driveCurrent"
+          },
+          "Drive/Module2/drive": {
+            "p50_a": 0.7000000000000001,
+            "p90_a": 60.0,
+            "p95_a": 62.31,
+            "p99_a": 71.64,
+            "peak_a": 133.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/driveCurrent"
+          },
+          "Drive/Module3/drive": {
+            "p50_a": 0.52,
+            "p90_a": 59.06,
+            "p95_a": 61.46599999999999,
+            "p99_a": 69.82000000000001,
+            "peak_a": 135.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/driveCurrent"
+          },
+          "Drive/Module1/drive": {
+            "p50_a": 0.86,
+            "p90_a": 59.14,
+            "p95_a": 61.76,
+            "p99_a": 69.5434,
+            "peak_a": 128.68,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/driveCurrent"
+          },
+          "Drive/Module0/turn": {
+            "p50_a": 3.06,
+            "p90_a": 11.64,
+            "p95_a": 18.0,
+            "p99_a": 63.2848,
+            "peak_a": 124.4,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module0/turnCurrent"
+          },
+          "Drive/Module1/turn": {
+            "p50_a": 2.42,
+            "p90_a": 11.620000000000001,
+            "p95_a": 17.76,
+            "p99_a": 62.56799999999981,
+            "peak_a": 124.36,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module1/turnCurrent"
+          },
+          "Drive/Module2/turn": {
+            "p50_a": 6.46,
+            "p90_a": 11.9,
+            "p95_a": 18.21299999999999,
+            "p99_a": 58.979000000000084,
+            "peak_a": 127.46000000000001,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module2/turnCurrent"
+          },
+          "Drive/Module3/turn": {
+            "p50_a": 2.94,
+            "p90_a": 10.9,
+            "p95_a": 16.537999999999993,
+            "p99_a": 56.26480000000011,
+            "peak_a": 122.56,
+            "current_type": "stator",
+            "source_entry": "/Drive/Module3/turnCurrent"
+          },
+          "/Hopper/hopperStatorCurrent": {
+            "p50_a": 0.04,
+            "p90_a": 23.56,
+            "p95_a": 34.631,
+            "p99_a": 51.992399999999954,
+            "peak_a": 58.08,
+            "current_type": "stator",
+            "source_entry": "/Hopper/hopperStatorCurrent"
+          },
+          "/rollers/leaderStatorCurrentAmps": {
+            "p50_a": 9.040000000000001,
+            "p90_a": 38.508,
+            "p95_a": 39.767999999999994,
+            "p99_a": 47.547199999999975,
+            "peak_a": 49.76,
+            "current_type": "stator",
+            "source_entry": "/rollers/leaderStatorCurrentAmps"
+          },
+          "/rollers/followerStatorCurrentAmps": {
+            "p50_a": 8.850000000000001,
+            "p90_a": 32.002,
+            "p95_a": 35.143,
+            "p99_a": 41.47740000000001,
+            "peak_a": 43.7,
+            "current_type": "stator",
+            "source_entry": "/rollers/followerStatorCurrentAmps"
+          }
+        },
+        "peak_current_a": 344.27862995259386,
+        "internal_resistance_ohm": 0.018643702293959362
+      }
+    },
+    "notes": []
+  },
+  {
+    "log_path": "/Users/swadkar/team4099/log_analysis/logs/autos_dp_03_30_26/akit_26-03-30_21-37-13.wpilog",
+    "rating": "Unknown",
+    "summary": "Not enough enabled battery samples to score this log.",
+    "battery_condition": "Excellent",
+    "battery_condition_summary": "Resting voltage looked strong.",
+    "load_assessment": null,
+    "load_assessment_summary": null,
+    "dominant_cause": null,
+    "enabled_duration_s": 0.0,
+    "resting_voltage_v": 12.881477294921874,
+    "min_enabled_voltage_v": null,
+    "p05_enabled_voltage_v": null,
+    "brownout_voltage_v": 6.75,
+    "brownout_events": 0,
+    "time_below_brownout_s": 0.0,
+    "time_below_9v_s": 0.0,
+    "time_below_10v_s": 0.0,
+    "current_entry": "estimated_subsystem_sum",
+    "current_stats": null,
+    "subsystem_current_stats": {},
+    "peak_current_a": null,
+    "internal_resistance_ohm": null,
+    "phase_summaries": {
+      "all_enabled": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Resting voltage looked strong.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      },
+      "auto": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Resting voltage looked strong.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      },
+      "teleop": {
+        "rating": "Unknown",
+        "summary": "Not enough enabled battery samples to score this log.",
+        "battery_condition": "Excellent",
+        "battery_condition_summary": "Resting voltage looked strong.",
+        "load_assessment": null,
+        "load_assessment_summary": null,
+        "dominant_cause": null,
+        "enabled_duration_s": 0.0,
+        "min_enabled_voltage_v": null,
+        "p05_enabled_voltage_v": null,
+        "brownout_events": 0,
+        "time_below_brownout_s": 0.0,
+        "time_below_9v_s": 0.0,
+        "time_below_10v_s": 0.0,
+        "current_stats": null,
+        "subsystem_current_stats": {},
+        "peak_current_a": null,
+        "internal_resistance_ohm": null
+      }
+    },
+    "notes": [
+      "Estimated subsystem current never reached a convincing load level for resistance fitting.",
+      "Enabled runtime was short, so this score is based on limited load time."
+    ]
+  }
+]

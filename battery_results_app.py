@@ -559,13 +559,13 @@ def build_flags(
     if resistance is not None and resistance_pct is not None:
         if resistance_pct >= 85:
             flags.append(
-                f"Estimated internal resistance is high relative to this dataset: {resistance:.1f} mOhm "
+                f"Estimated effective resistance in this selected phase is high relative to this dataset: {resistance:.1f} mOhm "
                 f"(worse than about {100 - resistance_pct:.0f}% of logs)."
             )
         elif resistance_pct <= 30 and min_v is not None and min_v < 8.5:
             flags.append(
-                f"Battery resistance looks acceptable at {resistance:.1f} mOhm, so the weak voltage "
-                "was likely driven more by match load than by battery health alone."
+                f"Effective resistance in this selected phase looks acceptable at {resistance:.1f} mOhm, so the weak voltage "
+                "was likely driven more by phase load than by battery health alone."
             )
 
     component_shift = describe_component_current_shift(subsystem_comparison, app_config)
@@ -596,17 +596,17 @@ def overview_column_config() -> dict[str, Any]:
     return {
         "match": st.column_config.TextColumn("Match", help="Match label parsed from the log filename."),
         "rating": st.column_config.TextColumn("Severity", help="Overall severity of the observed voltage behavior. This is not the same thing as battery quality."),
-        "battery_condition": st.column_config.TextColumn("Battery", help="Estimated battery condition based mainly on internal resistance or resting voltage."),
+        "battery_condition": st.column_config.TextColumn("Battery", help="Estimated battery condition based mainly on effective resistance or resting voltage."),
         "load_assessment": st.column_config.TextColumn("Load", help="How hard the robot was pulling current in this match."),
         "dominant_cause": st.column_config.TextColumn("Cause", help="Best-effort attribution for whether the issue looks battery-driven, load-driven, or mixed."),
         "summary": st.column_config.TextColumn("Summary", help="Primary severity reason."),
-        "min_enabled_voltage_v": st.column_config.NumberColumn("Min V", help="Minimum battery voltage while enabled.", format="%.2f V"),
-        "p05_enabled_voltage_v": st.column_config.NumberColumn("P05 V", help="5th percentile battery voltage while enabled.", format="%.2f V"),
+        "min_enabled_voltage_v": st.column_config.NumberColumn("Min V", help="Minimum battery voltage while enabled in the selected phase or full match view.", format="%.2f V"),
+        "p05_enabled_voltage_v": st.column_config.NumberColumn("P05 V", help="5th percentile battery voltage while enabled in the selected phase or full match view.", format="%.2f V"),
         "peak_current_a": st.column_config.NumberColumn("Peak Pack I", help="Peak estimated pack-side supply current while enabled. This is the whole-robot current model used for battery-health analysis.", format="%.1f A"),
         "current_p95_a": st.column_config.NumberColumn("P95 Pack I", help="95th percentile estimated pack-side supply current while enabled.", format="%.1f A"),
         "current_p99_a": st.column_config.NumberColumn("P99 Pack I", help="99th percentile estimated pack-side supply current while enabled.", format="%.1f A"),
         "current_p90_a": st.column_config.NumberColumn("P90 Pack I", help="90th percentile estimated pack-side supply current while enabled.", format="%.1f A"),
-        "internal_resistance_mohm": st.column_config.NumberColumn("Rint", help="Estimated effective internal resistance.", format="%.1f mOhm"),
+        "internal_resistance_mohm": st.column_config.NumberColumn("Reff", help="Estimated effective resistance over the selected phase or full match view. This is an in-match fit, not a fixed battery constant.", format="%.1f mOhm"),
         "brownout_events": st.column_config.NumberColumn("Brownouts", help="Number of browned-out transitions.")
     }
 
@@ -769,7 +769,7 @@ def render_selected_log(
         metric_delta_text(selected["current_p99_a"], df["current_p99_a"].median()),
     )
     e3.metric(
-        "Resistance",
+        "Effective Resistance",
         f"{selected['internal_resistance_mohm']:.1f} mOhm" if pd.notna(selected["internal_resistance_mohm"]) else "n/a",
         metric_delta_text(selected["internal_resistance_mohm"], df["internal_resistance_mohm"].median(), inverse=True),
     )
@@ -777,6 +777,7 @@ def render_selected_log(
     st.markdown("**Interpretation**")
     st.write(f"- Battery condition: {selected.get('battery_condition_summary') or 'n/a'}")
     st.write(f"- Load assessment: {selected.get('load_assessment_summary') or 'n/a'}")
+    st.caption("Voltage and effective resistance metrics are computed from the selected phase view, so they can differ between Auto and Teleop.")
 
     st.markdown("**What Went Wrong**")
     for flag in flags:

@@ -13,16 +13,17 @@ import pandas as pd
 import streamlit as st
 
 
-DEFAULT_RESULTS_PATH = Path(__file__).resolve().parent / "2026vache" / "results.json"
+DEFAULT_DATASETS_ROOT = Path(__file__).resolve().parent / "logs"
 DEFAULT_APP_CONFIG_PATH = Path(__file__).resolve().parent / "battery_results_app_config.json"
-DEFAULT_RESULTS_URL = "https://raw.githubusercontent.com/team4099/log_analysis/main/2026vache/results.json"
+DEFAULT_GITHUB_LOGS_BASE_URL = "https://raw.githubusercontent.com/team4099/log_analysis/main/logs"
 RATING_ORDER = ["Critical", "Poor", "Fair", "Good", "Excellent", "Unknown"]
 BATTERY_CONDITION_ORDER = ["Poor", "Fair", "Good", "Excellent", "Unknown"]
 LOAD_ASSESSMENT_ORDER = ["Extreme", "High", "Moderate", "Normal", "Unknown"]
 DOMINANT_CAUSE_ORDER = ["battery", "load", "mixed", "Unknown"]
 DEFAULT_APP_CONFIG: dict[str, Any] = {
-    "results_path": DEFAULT_RESULTS_URL,
-    "fallback_results_path": str(DEFAULT_RESULTS_PATH),
+    "datasets_root": str(DEFAULT_DATASETS_ROOT),
+    "default_dataset": "2026vache",
+    "github_logs_base_url": DEFAULT_GITHUB_LOGS_BASE_URL,
     "comparison_metric": "p99_delta_vs_peer_median",
     "comparison_top_n": 8,
     "display_names": {},
@@ -32,7 +33,7 @@ DEFAULT_APP_CONFIG: dict[str, Any] = {
         {"name": "Module 2", "patterns": ["Drive/Module2/drive", "Drive/Module2/turn"]},
         {"name": "Module 3", "patterns": ["Drive/Module3/drive", "Drive/Module3/turn"]},
         {"name": "Shooter", "patterns": ["/Shooter/ShooterLeaderStatorCurrent", "/Shooter/ShooterFollowerStatorCurrent"]},
-        {"name": "Feed", "patterns": ["/Feeder/FeederStatorCurrentAmps", "/Hopper/hopperStatorCurrent", "/rollers/rollerStatorCurrentAmps"]},
+        {"name": "Feed", "patterns": ["/Feeder/FeederStatorCurrentAmps", "/Hopper/hopperStatorCurrent", "/rollers/leaderStatorCurrentAmps", "/rollers/followerStatorCurrentAmps"]},
         {"name": "Intake", "patterns": ["/intake/intakeStatorCurrentAmps"]},
         {"name": "Climb", "patterns": ["/Climb/climbStatorCurrent"]}
     ]
@@ -51,6 +52,27 @@ def resolve_config_path(value: str, config_path: Path) -> Path:
     if candidate.is_absolute():
         return candidate
     return (config_path.parent / candidate).resolve()
+
+
+def dataset_results_path(datasets_root: Path, dataset_name: str) -> Path:
+    return datasets_root / dataset_name / "results" / "results.json"
+
+
+def dataset_results_url(base_url: str, dataset_name: str) -> str:
+    normalized_base = base_url.rstrip("/")
+    return f"{normalized_base}/{dataset_name}/results/results.json"
+
+
+def discover_datasets(datasets_root: Path) -> list[str]:
+    if not datasets_root.exists():
+        return []
+    names = []
+    for child in sorted(datasets_root.iterdir()):
+        if not child.is_dir():
+            continue
+        if dataset_results_path(datasets_root, child.name).exists():
+            names.append(child.name)
+    return names
 
 
 def normalize_github_url(source: str) -> str:
@@ -92,6 +114,12 @@ def load_results_from_source(source: str, fallback_path: Path | None = None) -> 
     if not isinstance(raw, list):
         raise ValueError("results JSON must be a list of log summaries")
     return [row for row in raw if isinstance(row, dict)]
+
+
+def load_results_for_dataset(dataset_name: str, datasets_root: Path, github_logs_base_url: str) -> tuple[list[dict[str, Any]], str, Path]:
+    fallback_path = dataset_results_path(datasets_root, dataset_name)
+    source_url = dataset_results_url(github_logs_base_url, dataset_name)
+    return load_results_from_source(source_url, fallback_path), source_url, fallback_path
 
 
 def deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
@@ -707,26 +735,64 @@ def main() -> None:
         st.error(f"Failed to load app config: {exc}")
         st.stop()
 
+    datasets_root = resolve_config_path(app_config["datasets_root"], DEFAULT_APP_CONFIG_PATH)
+    dataset_names = discover_datasets(datasets_root)
+    default_dataset = app_config.get("default_dataset")
+    if default_dataset not in dataset_names and dataset_names:
+        default_dataset = dataset_names[0]
+
     with st.sidebar:
         st.header("Results Source")
-        path_text = st.text_input("Results JSON path or URL", str(app_config["results_path"]))
-        uploaded = st.file_uploader("Or upload a results.json", type=["json"])
-        fallback_path = resolve_config_path(
-            app_config.get("fallback_results_path", str(DEFAULT_RESULTS_PATH)),
-            DEFAULT_APP_CONFIG_PATH,
-        )
-        st.caption(f"Default GitHub source: {app_config['results_path']}")
-        if fallback_path.exists():
-            st.caption(f"Local fallback: {fallback_path}")
+        source_mode = st.radio("Source", ["Example Dataset", "Custom Path or URL", "Upload"], index=0)
+
+        selected_dataset = None
+        path_text = ""
+        uploaded = None
+        source_label = ""
+
+        if source_mode == "Example Dataset":
+            if not dataset_names:
+                st.warning(f"No datasets found under {datasets_root}.")
+            else:
+                default_index = dataset_names.index(default_dataset) if default_dataset in dataset_names else 0
+                selected_dataset = st.selectbox("Example Name", dataset_names, index=default_index)
+                remote_url = dataset_results_url(app_config["github_logs_base_url"], selected_dataset)
+                local_path = dataset_results_path(datasets_root, selected_dataset)
+                source_label = f"Dataset `{selected_dataset}`"
+                st.caption(f"GitHub source: {remote_url}")
+                if local_path.exists():
+                    st.caption(f"Local fallback: {local_path}")
+        elif source_mode == "Custom Path or URL":
+            path_text = st.text_input("Results JSON path or URL", "")
+        else:
+            uploaded = st.file_uploader("Upload a results.json", type=["json"])
 
     try:
-        if uploaded is not None:
+        if source_mode == "Upload":
+            if uploaded is None:
+                st.info("Upload a `results.json` file to inspect it.")
+                st.stop()
             records = json.load(uploaded)
+            source_label = "Uploaded results.json"
+        elif source_mode == "Custom Path or URL":
+            if not path_text.strip():
+                st.info("Enter a local path or URL for a `results.json` file.")
+                st.stop()
+            records = load_results_from_source(path_text)
+            source_label = path_text
         else:
-            records = load_results_from_source(path_text, fallback_path)
+            if selected_dataset is None:
+                st.stop()
+            records, _, _ = load_results_for_dataset(
+                selected_dataset,
+                datasets_root,
+                app_config["github_logs_base_url"],
+            )
     except Exception as exc:
         st.error(f"Failed to load results: {exc}")
         st.stop()
+
+    st.caption(f"Loaded source: {source_label}")
 
     df, subsystem_stats = normalize_records(records)
     if df.empty:

@@ -13,13 +13,14 @@ env/
 .streamlit/
 
 *.wpilog
-logs/
 data/
 outputs/
+logs/*/*.wpilog
+logs/*/results/*
+!logs/*/results/results.json
 
 results.local.json
 results_*.json
-!2026vache/results.json
 
 battery_health_config.local.json
 battery_results_app_config.local.json

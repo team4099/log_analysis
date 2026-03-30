@@ -1,6 +1,7 @@
 {
-  "results_path": "https://raw.githubusercontent.com/team4099/log_analysis/main/2026vache/results.json",
-  "fallback_results_path": "./2026vache/results.json",
+  "datasets_root": "./logs",
+  "default_dataset": "2026vache",
+  "github_logs_base_url": "https://raw.githubusercontent.com/team4099/log_analysis/main/logs",
   "comparison_metric": "p99_delta_vs_peer_median",
   "comparison_top_n": 8,
   "display_names": {
@@ -16,7 +17,8 @@
     "/Shooter/ShooterFollowerStatorCurrent": "Shooter Follower",
     "/Feeder/FeederStatorCurrentAmps": "Feeder",
     "/Hopper/hopperStatorCurrent": "Hopper",
-    "/rollers/rollerStatorCurrentAmps": "Rollers",
+    "/rollers/leaderStatorCurrentAmps": "Intake Rollers Leader",
+    "/rollers/followerStatorCurrentAmps": "Intake Rollers Follower",
     "/intake/intakeStatorCurrentAmps": "Intake",
     "/Climb/climbStatorCurrent": "Climb"
   },
@@ -61,7 +63,8 @@
       "patterns": [
         "/Feeder/FeederStatorCurrentAmps",
         "/Hopper/hopperStatorCurrent",
-        "/rollers/rollerStatorCurrentAmps"
+        "/rollers/leaderStatorCurrentAmps",
+        "/rollers/followerStatorCurrentAmps"
       ]
     },
     {

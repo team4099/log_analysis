@@ -49,7 +49,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
             "/Feeder/FeederSupplyCurrentAmps",
             "/Hopper/hopperSupplyCurrent",
             "/intake/intakeSupplyCurrentAmps",
-            "/rollers/rollerSupplyCurrentAmps",
+            "/rollers/leaderSupplyCurrentAmps",
+            "/rollers/followerSupplyCurrentAmps",
             "/Shooter/ShooterLeaderSupplyCurrent",
             "/Shooter/ShooterFollowerSupplyCurrent",
         ],
@@ -108,7 +109,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
             {"label": "/Feeder/FeederStatorCurrentAmps", "entry": "/Feeder/FeederStatorCurrentAmps", "current_type": "stator"},
             {"label": "/Hopper/hopperStatorCurrent", "entry": "/Hopper/hopperStatorCurrent", "current_type": "stator"},
             {"label": "/intake/intakeStatorCurrentAmps", "entry": "/intake/intakeStatorCurrentAmps", "current_type": "stator"},
-            {"label": "/rollers/rollerStatorCurrentAmps", "entry": "/rollers/rollerStatorCurrentAmps", "current_type": "stator"},
+            {"label": "/rollers/leaderStatorCurrentAmps", "entry": "/rollers/leaderStatorCurrentAmps", "current_type": "stator"},
+            {"label": "/rollers/followerStatorCurrentAmps", "entry": "/rollers/followerStatorCurrentAmps", "current_type": "stator"},
             {"label": "/Shooter/ShooterLeaderStatorCurrent", "entry": "/Shooter/ShooterLeaderStatorCurrent", "current_type": "stator"},
             {"label": "/Shooter/ShooterFollowerStatorCurrent", "entry": "/Shooter/ShooterFollowerStatorCurrent", "current_type": "stator"}
         ]

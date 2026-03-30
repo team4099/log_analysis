@@ -40,7 +40,8 @@
       "/Feeder/FeederSupplyCurrentAmps",
       "/Hopper/hopperSupplyCurrent",
       "/intake/intakeSupplyCurrentAmps",
-      "/rollers/rollerSupplyCurrentAmps",
+      "/rollers/leaderSupplyCurrentAmps",
+      "/rollers/followerSupplyCurrentAmps",
       "/Shooter/ShooterLeaderSupplyCurrent",
       "/Shooter/ShooterFollowerSupplyCurrent"
     ],
@@ -148,8 +149,13 @@
         "current_type": "stator"
       },
       {
-        "label": "/rollers/rollerStatorCurrentAmps",
-        "entry": "/rollers/rollerStatorCurrentAmps",
+        "label": "/rollers/leaderStatorCurrentAmps",
+        "entry": "/rollers/leaderStatorCurrentAmps",
+        "current_type": "stator"
+      },
+      {
+        "label": "/rollers/followerStatorCurrentAmps",
+        "entry": "/rollers/followerStatorCurrentAmps",
         "current_type": "stator"
       },
       {

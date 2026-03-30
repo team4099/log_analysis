@@ -26,6 +26,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "browned_out": "/SystemStats/BrownedOut",
         "brownout_voltage": "/SystemStats/BrownoutVoltage",
         "enabled": "/DriverStation/Enabled",
+        "autonomous": "/DriverStation/Autonomous",
     },
     "thresholds": {
         "min_enabled_duration_s_for_confidence_note": 5.0,
@@ -155,6 +156,7 @@ class BatterySummary:
     subsystem_current_stats: dict[str, dict[str, float]]
     peak_current_a: float | None
     internal_resistance_ohm: float | None
+    phase_summaries: dict[str, dict[str, Any]]
     notes: list[str]
 
     def as_dict(self) -> dict[str, Any]:
@@ -181,6 +183,7 @@ class BatterySummary:
             "subsystem_current_stats": self.subsystem_current_stats,
             "peak_current_a": self.peak_current_a,
             "internal_resistance_ohm": self.internal_resistance_ohm,
+            "phase_summaries": self.phase_summaries,
             "notes": self.notes,
         }
 
@@ -209,6 +212,7 @@ def build_error_summary(log_path: Path, message: str) -> BatterySummary:
         subsystem_current_stats={},
         peak_current_a=None,
         internal_resistance_ohm=None,
+        phase_summaries={},
         notes=[],
     )
 
@@ -479,6 +483,14 @@ def count_true_transitions(series: list[tuple[int, bool]]) -> int:
     return count
 
 
+def count_true_transitions_for_filter(
+    series: list[tuple[int, bool]],
+    include_timestamp: callable,
+) -> int:
+    filtered = [(timestamp, value) for timestamp, value in series if include_timestamp(timestamp)]
+    return count_true_transitions(filtered)
+
+
 def integrate_below_threshold(enabled_points: list[tuple[int, float]], threshold: float) -> float:
     if len(enabled_points) < 2:
         return 0.0
@@ -616,13 +628,23 @@ def summarize_enabled_component_currents(
     component_series: dict[str, dict[str, Any]],
     enabled_series: list[tuple[int, bool]],
 ) -> dict[str, dict[str, Any]]:
+    return summarize_component_currents_for_filter(
+        component_series,
+        lambda timestamp: state_at(enabled_series, timestamp, False),
+    )
+
+
+def summarize_component_currents_for_filter(
+    component_series: dict[str, dict[str, Any]],
+    include_timestamp: callable,
+) -> dict[str, dict[str, Any]]:
     summaries: dict[str, dict[str, Any]] = {}
     for name, component in component_series.items():
         series = component["series"]
         enabled_only = [
             (timestamp, value)
             for timestamp, value in series
-            if state_at(enabled_series, timestamp, False)
+            if include_timestamp(timestamp)
         ]
         summary = summarize_current_series(enabled_only)
         if summary is not None:
@@ -792,32 +814,20 @@ def determine_dominant_cause(
     return "mixed"
 
 
-def analyze_log(log_path: Path, config: dict[str, Any]) -> BatterySummary:
-    entries = config["entries"]
-    series = load_series(log_path)
-    voltage_series = [
-        (timestamp, float(value))
-        for timestamp, value in series.get(entries["battery_voltage"], [])
-        if isinstance(value, (int, float))
-    ]
-    enabled_series = [(timestamp, bool(value)) for timestamp, value in series.get(entries["enabled"], [])]
-    browned_out_series = [(timestamp, bool(value)) for timestamp, value in series.get(entries["browned_out"], [])]
-    brownout_voltage_series = [
-        float(value)
-        for _, value in series.get(entries["brownout_voltage"], [])
-        if isinstance(value, (int, float))
-    ]
-
-    if not voltage_series:
-        return build_error_summary(log_path, "Battery voltage entry is missing from this log.")
-
-    current_entry, current_series, _, current_notes = build_estimated_current_series(series, voltage_series, config)
-    subsystem_breakdown_series = build_subsystem_breakdown_series(series, config)
-
+def build_phase_summary(
+    resting_voltage_v: float | None,
+    brownout_voltage_v: float | None,
+    browned_out_series: list[tuple[int, bool]],
+    voltage_series: list[tuple[int, float]],
+    current_series: list[tuple[int, float]],
+    subsystem_breakdown_series: dict[str, dict[str, Any]],
+    include_timestamp: callable,
+    config: dict[str, Any],
+) -> dict[str, Any]:
     enabled_points = [
         (timestamp, voltage)
         for timestamp, voltage in voltage_series
-        if state_at(enabled_series, timestamp, False)
+        if include_timestamp(timestamp)
     ]
     enabled_duration_s = 0.0
     if len(enabled_points) >= 2:
@@ -826,35 +836,27 @@ def analyze_log(log_path: Path, config: dict[str, Any]) -> BatterySummary:
     enabled_voltages = [voltage for _, voltage in enabled_points]
     min_enabled_voltage_v = min(enabled_voltages) if enabled_voltages else None
     p05_enabled_voltage_v = percentile(enabled_voltages, 0.05) if enabled_voltages else None
-    brownout_voltage_v = brownout_voltage_series[-1] if brownout_voltage_series else None
-    brownout_events = count_true_transitions(browned_out_series)
+    brownout_events = count_true_transitions_for_filter(browned_out_series, include_timestamp)
     enabled_current_series = [
         (timestamp, current)
         for timestamp, current in current_series
-        if state_at(enabled_series, timestamp, False)
+        if include_timestamp(timestamp)
     ]
     current_stats = summarize_current_series(enabled_current_series)
     enabled_current_values = [current for _, current in enabled_current_series]
     peak_current_a = current_stats["peak_a"] if current_stats is not None else None
-    subsystem_current_stats = summarize_enabled_component_currents(subsystem_breakdown_series, enabled_series)
-    resting_voltage_v = estimate_resting_voltage(voltage_series, current_series, enabled_series)
-
+    subsystem_current_stats = summarize_component_currents_for_filter(subsystem_breakdown_series, include_timestamp)
     aligned_enabled_points = [
         point
         for point in align_numeric_series(voltage_series, current_series)
-        if state_at(enabled_series, point[0], False)
+        if include_timestamp(point[0])
     ]
 
-    notes = list(current_notes)
     resistance_thresholds = config["thresholds"]["resistance"]
     if enabled_current_values and peak_current_a is not None and peak_current_a >= resistance_thresholds["min_peak_current_a"]:
         internal_resistance_ohm = estimate_internal_resistance(resting_voltage_v, aligned_enabled_points)
-        if internal_resistance_ohm is None:
-            notes.append("Not enough loaded current samples to estimate internal resistance.")
     else:
         internal_resistance_ohm = None
-        if current_entry is not None:
-            notes.append("Estimated subsystem current never reached a convincing load level for resistance fitting.")
 
     time_below_brownout_s = (
         integrate_below_threshold(enabled_points, brownout_voltage_v)
@@ -885,6 +887,115 @@ def analyze_log(log_path: Path, config: dict[str, Any]) -> BatterySummary:
     )
     dominant_cause = determine_dominant_cause(rating, battery_condition, load_assessment)
 
+    return {
+        "rating": rating,
+        "summary": summary,
+        "battery_condition": battery_condition,
+        "battery_condition_summary": battery_condition_summary,
+        "load_assessment": load_assessment,
+        "load_assessment_summary": load_assessment_summary,
+        "dominant_cause": dominant_cause,
+        "enabled_duration_s": enabled_duration_s,
+        "min_enabled_voltage_v": min_enabled_voltage_v,
+        "p05_enabled_voltage_v": p05_enabled_voltage_v,
+        "brownout_events": brownout_events,
+        "time_below_brownout_s": time_below_brownout_s,
+        "time_below_9v_s": time_below_9v_s,
+        "time_below_10v_s": time_below_10v_s,
+        "current_stats": current_stats,
+        "subsystem_current_stats": subsystem_current_stats,
+        "peak_current_a": peak_current_a,
+        "internal_resistance_ohm": internal_resistance_ohm,
+    }
+
+
+def analyze_log(log_path: Path, config: dict[str, Any]) -> BatterySummary:
+    entries = config["entries"]
+    series = load_series(log_path)
+    voltage_series = [
+        (timestamp, float(value))
+        for timestamp, value in series.get(entries["battery_voltage"], [])
+        if isinstance(value, (int, float))
+    ]
+    enabled_series = [(timestamp, bool(value)) for timestamp, value in series.get(entries["enabled"], [])]
+    autonomous_series = [(timestamp, bool(value)) for timestamp, value in series.get(entries["autonomous"], [])]
+    browned_out_series = [(timestamp, bool(value)) for timestamp, value in series.get(entries["browned_out"], [])]
+    brownout_voltage_series = [
+        float(value)
+        for _, value in series.get(entries["brownout_voltage"], [])
+        if isinstance(value, (int, float))
+    ]
+
+    if not voltage_series:
+        return build_error_summary(log_path, "Battery voltage entry is missing from this log.")
+
+    current_entry, current_series, _, current_notes = build_estimated_current_series(series, voltage_series, config)
+    subsystem_breakdown_series = build_subsystem_breakdown_series(series, config)
+
+    brownout_voltage_v = brownout_voltage_series[-1] if brownout_voltage_series else None
+    resting_voltage_v = estimate_resting_voltage(voltage_series, current_series, enabled_series)
+
+    notes = list(current_notes)
+    phase_summaries = {
+        "all_enabled": build_phase_summary(
+            resting_voltage_v,
+            brownout_voltage_v,
+            browned_out_series,
+            voltage_series,
+            current_series,
+            subsystem_breakdown_series,
+            lambda timestamp: state_at(enabled_series, timestamp, False),
+            config,
+        ),
+        "auto": build_phase_summary(
+            resting_voltage_v,
+            brownout_voltage_v,
+            browned_out_series,
+            voltage_series,
+            current_series,
+            subsystem_breakdown_series,
+            lambda timestamp: state_at(enabled_series, timestamp, False) and state_at(autonomous_series, timestamp, False),
+            config,
+        ),
+        "teleop": build_phase_summary(
+            resting_voltage_v,
+            brownout_voltage_v,
+            browned_out_series,
+            voltage_series,
+            current_series,
+            subsystem_breakdown_series,
+            lambda timestamp: state_at(enabled_series, timestamp, False) and not state_at(autonomous_series, timestamp, False),
+            config,
+        ),
+    }
+
+    overall_summary = phase_summaries["all_enabled"]
+    enabled_duration_s = overall_summary["enabled_duration_s"]
+    min_enabled_voltage_v = overall_summary["min_enabled_voltage_v"]
+    p05_enabled_voltage_v = overall_summary["p05_enabled_voltage_v"]
+    brownout_events = overall_summary["brownout_events"]
+    time_below_brownout_s = overall_summary["time_below_brownout_s"]
+    time_below_9v_s = overall_summary["time_below_9v_s"]
+    time_below_10v_s = overall_summary["time_below_10v_s"]
+    current_stats = overall_summary["current_stats"]
+    subsystem_current_stats = overall_summary["subsystem_current_stats"]
+    peak_current_a = overall_summary["peak_current_a"]
+    internal_resistance_ohm = overall_summary["internal_resistance_ohm"]
+    rating = overall_summary["rating"]
+    summary = overall_summary["summary"]
+    battery_condition = overall_summary["battery_condition"]
+    battery_condition_summary = overall_summary["battery_condition_summary"]
+    load_assessment = overall_summary["load_assessment"]
+    load_assessment_summary = overall_summary["load_assessment_summary"]
+    dominant_cause = overall_summary["dominant_cause"]
+
+    resistance_thresholds = config["thresholds"]["resistance"]
+    if current_stats is None or peak_current_a is None or peak_current_a < resistance_thresholds["min_peak_current_a"]:
+        if current_entry is not None:
+            notes.append("Estimated subsystem current never reached a convincing load level for resistance fitting.")
+    elif internal_resistance_ohm is None:
+        notes.append("Not enough loaded current samples to estimate internal resistance.")
+
     if enabled_duration_s < config["thresholds"]["min_enabled_duration_s_for_confidence_note"]:
         notes.append("Enabled runtime was short, so this score is based on limited load time.")
 
@@ -911,6 +1022,7 @@ def analyze_log(log_path: Path, config: dict[str, Any]) -> BatterySummary:
         subsystem_current_stats=subsystem_current_stats,
         peak_current_a=peak_current_a,
         internal_resistance_ohm=internal_resistance_ohm,
+        phase_summaries=phase_summaries,
         notes=notes,
     )
 

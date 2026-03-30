@@ -20,6 +20,11 @@ RATING_ORDER = ["Critical", "Poor", "Fair", "Good", "Excellent", "Unknown"]
 BATTERY_CONDITION_ORDER = ["Poor", "Fair", "Good", "Excellent", "Unknown"]
 LOAD_ASSESSMENT_ORDER = ["Extreme", "High", "Moderate", "Normal", "Unknown"]
 DOMINANT_CAUSE_ORDER = ["battery", "load", "mixed", "Unknown"]
+PHASE_OPTIONS = {
+    "Auto + Teleop": "all_enabled",
+    "Auto Only": "auto",
+    "Teleop Only": "teleop",
+}
 DEFAULT_APP_CONFIG: dict[str, Any] = {
     "datasets_root": str(DEFAULT_DATASETS_ROOT),
     "default_dataset": "2026vache",
@@ -119,6 +124,8 @@ def load_results_from_source(source: str, fallback_path: Path | None = None) -> 
 def load_results_for_dataset(dataset_name: str, datasets_root: Path, github_logs_base_url: str) -> tuple[list[dict[str, Any]], str, Path]:
     fallback_path = dataset_results_path(datasets_root, dataset_name)
     source_url = dataset_results_url(github_logs_base_url, dataset_name)
+    if fallback_path.exists():
+        return load_results(fallback_path), str(fallback_path), fallback_path
     return load_results_from_source(source_url, fallback_path), source_url, fallback_path
 
 
@@ -161,9 +168,56 @@ def match_sort_key(match_label: str) -> tuple[int, int, str]:
     return (2, int(number), lowered)
 
 
-def normalize_records(records: list[dict[str, Any]]) -> tuple[pd.DataFrame, dict[str, dict[str, dict[str, float]]]]:
+def apply_table_categories(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    df["rating"] = pd.Categorical(df["rating"], categories=RATING_ORDER, ordered=True)
+    df["battery_condition"] = pd.Categorical(df["battery_condition"], categories=BATTERY_CONDITION_ORDER, ordered=True)
+    df["load_assessment"] = pd.Categorical(df["load_assessment"], categories=LOAD_ASSESSMENT_ORDER, ordered=True)
+    df["dominant_cause"] = pd.Categorical(df["dominant_cause"], categories=DOMINANT_CAUSE_ORDER, ordered=True)
+    df["_match_sort"] = df["match"].map(match_sort_key)
+    df = df.sort_values(["_match_sort", "rating"], ascending=[True, True]).reset_index(drop=True)
+    return df.drop(columns=["_match_sort"])
+
+
+def summary_to_row(path: str, match_label: str, summary: dict[str, Any], base_row: dict[str, Any]) -> dict[str, Any]:
+    current_stats = summary.get("current_stats") or {}
+    return {
+        **base_row,
+        "match": match_label,
+        "log_path": path,
+        "rating": summary.get("rating", base_row.get("rating", "Unknown")),
+        "summary": summary.get("summary", base_row.get("summary", "")),
+        "battery_condition": summary.get("battery_condition", base_row.get("battery_condition", "Unknown")) or "Unknown",
+        "battery_condition_summary": summary.get("battery_condition_summary", base_row.get("battery_condition_summary", "")),
+        "load_assessment": summary.get("load_assessment", base_row.get("load_assessment", "Unknown")) or "Unknown",
+        "load_assessment_summary": summary.get("load_assessment_summary", base_row.get("load_assessment_summary", "")),
+        "dominant_cause": summary.get("dominant_cause", base_row.get("dominant_cause", "Unknown")) or "Unknown",
+        "enabled_duration_s": summary.get("enabled_duration_s"),
+        "resting_voltage_v": base_row.get("resting_voltage_v"),
+        "min_enabled_voltage_v": summary.get("min_enabled_voltage_v"),
+        "p05_enabled_voltage_v": summary.get("p05_enabled_voltage_v"),
+        "brownout_events": summary.get("brownout_events"),
+        "time_below_9v_s": summary.get("time_below_9v_s"),
+        "time_below_10v_s": summary.get("time_below_10v_s"),
+        "peak_current_a": summary.get("peak_current_a"),
+        "current_p50_a": current_stats.get("p50_a"),
+        "current_p90_a": current_stats.get("p90_a"),
+        "current_p95_a": current_stats.get("p95_a"),
+        "current_p99_a": current_stats.get("p99_a"),
+        "internal_resistance_mohm": (
+            summary["internal_resistance_ohm"] * 1000.0
+            if summary.get("internal_resistance_ohm") is not None
+            else None
+        ),
+        "notes": base_row.get("notes", ""),
+    }
+
+
+def normalize_records(records: list[dict[str, Any]]) -> tuple[pd.DataFrame, dict[str, dict[str, dict[str, float]]], dict[str, dict[str, dict[str, Any]]]]:
     table_rows: list[dict[str, Any]] = []
     subsystem_stats: dict[str, dict[str, dict[str, float]]] = {}
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]] = {}
 
     for row in records:
         path = row.get("log_path", "")
@@ -171,48 +225,40 @@ def normalize_records(records: list[dict[str, Any]]) -> tuple[pd.DataFrame, dict
         current_stats = row.get("current_stats") or {}
         subsystem_map = row.get("subsystem_current_stats") or {}
         subsystem_stats[path] = subsystem_map
-        table_rows.append(
-            {
-                "match": match_label,
-                "log_path": path,
-                "rating": row.get("rating", "Unknown"),
-                "summary": row.get("summary", ""),
-                "battery_condition": row.get("battery_condition", "Unknown") or "Unknown",
-                "battery_condition_summary": row.get("battery_condition_summary", ""),
-                "load_assessment": row.get("load_assessment", "Unknown") or "Unknown",
-                "load_assessment_summary": row.get("load_assessment_summary", ""),
-                "dominant_cause": row.get("dominant_cause", "Unknown") or "Unknown",
-                "enabled_duration_s": row.get("enabled_duration_s"),
-                "resting_voltage_v": row.get("resting_voltage_v"),
-                "min_enabled_voltage_v": row.get("min_enabled_voltage_v"),
-                "p05_enabled_voltage_v": row.get("p05_enabled_voltage_v"),
-                "brownout_events": row.get("brownout_events"),
-                "time_below_9v_s": row.get("time_below_9v_s"),
-                "time_below_10v_s": row.get("time_below_10v_s"),
-                "peak_current_a": row.get("peak_current_a"),
-                "current_p50_a": current_stats.get("p50_a"),
-                "current_p90_a": current_stats.get("p90_a"),
-                "current_p95_a": current_stats.get("p95_a"),
-                "current_p99_a": current_stats.get("p99_a"),
-                "internal_resistance_mohm": (
-                    row["internal_resistance_ohm"] * 1000.0
-                    if row.get("internal_resistance_ohm") is not None
-                    else None
-                ),
-                "notes": " | ".join(row.get("notes", [])),
-            }
-        )
+        base_row = {
+            "match": match_label,
+            "log_path": path,
+            "rating": row.get("rating", "Unknown"),
+            "summary": row.get("summary", ""),
+            "battery_condition": row.get("battery_condition", "Unknown") or "Unknown",
+            "battery_condition_summary": row.get("battery_condition_summary", ""),
+            "load_assessment": row.get("load_assessment", "Unknown") or "Unknown",
+            "load_assessment_summary": row.get("load_assessment_summary", ""),
+            "dominant_cause": row.get("dominant_cause", "Unknown") or "Unknown",
+            "enabled_duration_s": row.get("enabled_duration_s"),
+            "resting_voltage_v": row.get("resting_voltage_v"),
+            "min_enabled_voltage_v": row.get("min_enabled_voltage_v"),
+            "p05_enabled_voltage_v": row.get("p05_enabled_voltage_v"),
+            "brownout_events": row.get("brownout_events"),
+            "time_below_9v_s": row.get("time_below_9v_s"),
+            "time_below_10v_s": row.get("time_below_10v_s"),
+            "peak_current_a": row.get("peak_current_a"),
+            "current_p50_a": current_stats.get("p50_a"),
+            "current_p90_a": current_stats.get("p90_a"),
+            "current_p95_a": current_stats.get("p95_a"),
+            "current_p99_a": current_stats.get("p99_a"),
+            "internal_resistance_mohm": (
+                row["internal_resistance_ohm"] * 1000.0
+                if row.get("internal_resistance_ohm") is not None
+                else None
+            ),
+            "notes": " | ".join(row.get("notes", [])),
+        }
+        phase_summaries_by_log[path] = row.get("phase_summaries") or {}
+        table_rows.append(base_row)
 
     df = pd.DataFrame(table_rows)
-    if not df.empty:
-        df["rating"] = pd.Categorical(df["rating"], categories=RATING_ORDER, ordered=True)
-        df["battery_condition"] = pd.Categorical(df["battery_condition"], categories=BATTERY_CONDITION_ORDER, ordered=True)
-        df["load_assessment"] = pd.Categorical(df["load_assessment"], categories=LOAD_ASSESSMENT_ORDER, ordered=True)
-        df["dominant_cause"] = pd.Categorical(df["dominant_cause"], categories=DOMINANT_CAUSE_ORDER, ordered=True)
-        df["_match_sort"] = df["match"].map(match_sort_key)
-        df = df.sort_values(["_match_sort", "rating"], ascending=[True, True]).reset_index(drop=True)
-        df = df.drop(columns=["_match_sort"])
-    return df, subsystem_stats
+    return apply_table_categories(df), subsystem_stats, phase_summaries_by_log
 
 
 def display_name(name: str, app_config: dict[str, Any]) -> str:
@@ -220,6 +266,65 @@ def display_name(name: str, app_config: dict[str, Any]) -> str:
     if mapped:
         return mapped
     return name.lstrip("/")
+
+
+def build_phase_dataframe(
+    df: pd.DataFrame,
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]],
+    phase_key: str,
+) -> pd.DataFrame:
+    if phase_key == "all_enabled":
+        return df
+
+    phase_rows: list[dict[str, Any]] = []
+    for row in df.to_dict("records"):
+        phase_summary = phase_summaries_by_log.get(row["log_path"], {}).get(phase_key)
+        if phase_summary:
+            phase_rows.append(summary_to_row(row["log_path"], row["match"], phase_summary, row))
+        else:
+            phase_rows.append(dict(row))
+    return apply_table_categories(pd.DataFrame(phase_rows))
+
+
+def subsystem_map_for_phase(
+    log_path: str,
+    subsystem_stats: dict[str, dict[str, dict[str, float]]],
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]],
+    phase_key: str,
+) -> dict[str, dict[str, float]]:
+    if phase_key == "all_enabled":
+        return subsystem_stats.get(log_path, {})
+    phase_summary = phase_summaries_by_log.get(log_path, {}).get(phase_key) or {}
+    subsystem_map = phase_summary.get("subsystem_current_stats")
+    if subsystem_map is None:
+        return subsystem_stats.get(log_path, {})
+    return subsystem_map
+
+
+def build_subsystem_frames_for_phase(
+    phase_df: pd.DataFrame,
+    subsystem_stats: dict[str, dict[str, dict[str, float]]],
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]],
+    phase_key: str,
+) -> dict[str, pd.DataFrame]:
+    return {
+        row["match"]: subsystem_dataframe(
+            subsystem_map_for_phase(row["log_path"], subsystem_stats, phase_summaries_by_log, phase_key)
+        )
+        for _, row in phase_df.iterrows()
+    }
+
+
+def has_phase_data(
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]],
+    phase_key: str,
+) -> bool:
+    if phase_key == "all_enabled":
+        return True
+    for summaries in phase_summaries_by_log.values():
+        if phase_key in summaries:
+            return True
+    return False
 
 
 def subsystem_dataframe(subsystem_map: dict[str, dict[str, float]]) -> pd.DataFrame:
@@ -288,11 +393,16 @@ def compare_subsystems_to_fleet(
     selected_subsystems: pd.DataFrame,
     all_subsystem_frames: dict[str, pd.DataFrame],
 ) -> pd.DataFrame:
+    if selected_subsystems.empty or "subsystem" not in selected_subsystems.columns:
+        return pd.DataFrame()
+
     rows: list[dict[str, Any]] = []
     for _, subsystem in selected_subsystems.iterrows():
         peers = []
         for match, df in all_subsystem_frames.items():
             if match == selected_match:
+                continue
+            if df.empty or "subsystem" not in df.columns:
                 continue
             peer = df[df["subsystem"] == subsystem["subsystem"]]
             if not peer.empty:
@@ -598,13 +708,21 @@ def render_overview(df: pd.DataFrame) -> None:
 def render_match_page(
     df: pd.DataFrame,
     subsystem_stats: dict[str, dict[str, dict[str, float]]],
-    all_subsystem_frames: dict[str, pd.DataFrame],
+    phase_summaries_by_log: dict[str, dict[str, dict[str, Any]]],
     app_config: dict[str, Any],
 ) -> None:
     st.subheader("Match Detail")
+    phase_label = st.selectbox("Phase", list(PHASE_OPTIONS.keys()), index=0)
+    phase_key = PHASE_OPTIONS[phase_label]
+    if phase_key != "all_enabled" and not has_phase_data(phase_summaries_by_log, phase_key):
+        st.info("This results file does not include phase-specific summaries yet. Re-run `battery_health.py` to enable auto/teleop filtering.")
+        phase_key = "all_enabled"
+    phase_df = build_phase_dataframe(df, phase_summaries_by_log, phase_key)
+    all_subsystem_frames = build_subsystem_frames_for_phase(phase_df, subsystem_stats, phase_summaries_by_log, phase_key)
     selected_match = st.selectbox("Match", df["match"].tolist(), index=0)
-    selected = df[df["match"] == selected_match].iloc[0]
-    render_selected_log(selected, df, subsystem_stats.get(selected["log_path"], {}), all_subsystem_frames, app_config)
+    selected = phase_df[phase_df["match"] == selected_match].iloc[0]
+    subsystem_map = subsystem_map_for_phase(selected["log_path"], subsystem_stats, phase_summaries_by_log, phase_key)
+    render_selected_log(selected, phase_df, subsystem_map, all_subsystem_frames, app_config)
 
 
 def render_selected_log(
@@ -681,7 +799,10 @@ def render_selected_log(
 
     st.markdown("**Per-Channel Enabled Current Breakdown**")
     if subsystem_df.empty:
-        st.info("No subsystem current breakdown was present in this results file.")
+        if (selected.get("enabled_duration_s") or 0.0) <= 0.0:
+            st.info("This log has no enabled data in the selected phase.")
+        else:
+            st.info("No subsystem current breakdown was present in this results file.")
     else:
         subsystem_table = subsystem_df.copy()
         subsystem_table["subsystem_display"] = subsystem_table["subsystem"].map(lambda name: display_name(name, app_config))
@@ -794,15 +915,10 @@ def main() -> None:
 
     st.caption(f"Loaded source: {source_label}")
 
-    df, subsystem_stats = normalize_records(records)
+    df, subsystem_stats, phase_summaries_by_log = normalize_records(records)
     if df.empty:
         st.warning("No log summaries were found in this JSON file.")
         st.stop()
-
-    all_subsystem_frames = {
-        row["match"]: subsystem_dataframe(subsystem_stats.get(row["log_path"], {}))
-        for _, row in df.iterrows()
-    }
 
     with st.sidebar:
         st.header("View")
@@ -811,7 +927,7 @@ def main() -> None:
     if page == "Fleet Overview":
         render_overview(df)
     else:
-        render_match_page(df, subsystem_stats, all_subsystem_frames, app_config)
+        render_match_page(df, subsystem_stats, phase_summaries_by_log, app_config)
 
 
 if __name__ == "__main__":

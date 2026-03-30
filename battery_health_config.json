@@ -7,7 +7,8 @@
     "battery_voltage": "/SystemStats/BatteryVoltage",
     "browned_out": "/SystemStats/BrownedOut",
     "brownout_voltage": "/SystemStats/BrownoutVoltage",
-    "enabled": "/DriverStation/Enabled"
+    "enabled": "/DriverStation/Enabled",
+    "autonomous": "/DriverStation/Autonomous"
   },
   "thresholds": {
     "min_enabled_duration_s_for_confidence_note": 5.0,

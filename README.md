@@ -89,6 +89,12 @@ The app also has two views in the sidebar:
 - `Fleet Overview`: default view for fleet-wide summary tables and charts
 - `Match Detail`: drill into one selected match
 
+Inside `Match Detail`, you can also filter the analysis to:
+
+- `Auto + Teleop`
+- `Auto Only`
+- `Teleop Only`
+
 GitHub URLs are supported in both forms:
 
 - Raw URLs such as `https://raw.githubusercontent.com/.../logs/2026vache/results/results.json`

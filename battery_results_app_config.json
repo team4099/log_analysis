@@ -1,6 +1,6 @@
 {
   "datasets_root": "./logs",
-  "default_dataset": "2026vache",
+  "default_dataset": "autos_dp_03_30_26",
   "github_logs_base_url": "https://raw.githubusercontent.com/team4099/log_analysis/main/logs",
   "comparison_metric": "p99_delta_vs_peer_median",
   "comparison_top_n": 8,

@@ -12,8 +12,8 @@ Battery log analysis tools for WPILOG files:
 - `battery_health_config.json`: default analyzer config for telemetry entry names, thresholds, and current-model settings.
 - `battery_results_app.py`: interactive Streamlit app for fleet-level review and single-match investigation.
 - `battery_results_app_config.json`: viewer config, including the datasets root, default dataset name, and display-name mappings.
-- `logs/2026vache/results/results.json`: sample output from the analyzer for the `2026vache` dataset.
 - `logs/autos_03_29_26/results/results.json`: sample output for the `autos_03_29_26` dataset.
+- `logs/autos_dp_03_30_26/results/results.json`: sample output for the `autos_dp_03_30_26` dataset.
 
 ## Requirements
 
@@ -82,12 +82,14 @@ The sidebar supports three ways to load data:
 2. Enter a local file path or URL
 3. Upload a `results.json` file directly
 
-When using example datasets, the app lets you choose between example names like `2026vache` or `autos_03_29_26`.
+When using example datasets, the app currently discovers checked-in datasets such as `autos_03_29_26` and `autos_dp_03_30_26`.
 
 The app also has two views in the sidebar:
 
 - `Fleet Overview`: default view for fleet-wide summary tables and charts
 - `Match Detail`: drill into one selected match
+
+When using example datasets, `Fleet Overview` can also compare the selected dataset against another discovered dataset.
 
 Inside `Match Detail`, you can also filter the analysis to:
 
@@ -95,10 +97,16 @@ Inside `Match Detail`, you can also filter the analysis to:
 - `Auto Only`
 - `Teleop Only`
 
+Inside `Match Detail`, the app now also shows a downsampled trace view for:
+
+- battery voltage vs time
+- estimated pack current vs time
+- enabled / autonomous / browned-out state timeline
+
 GitHub URLs are supported in both forms:
 
-- Raw URLs such as `https://raw.githubusercontent.com/.../logs/2026vache/results/results.json`
-- Standard GitHub blob URLs such as `https://github.com/.../blob/main/logs/2026vache/results/results.json`
+- Raw URLs such as `https://raw.githubusercontent.com/.../logs/autos_dp_03_30_26/results/results.json`
+- Standard GitHub blob URLs such as `https://github.com/.../blob/main/logs/autos_dp_03_30_26/results/results.json`
 
 If the GitHub URL for the selected example is unavailable, the app falls back to the local checked-in `logs/<example name>/results/results.json`.
 
@@ -122,6 +130,18 @@ streamlit run battery_results_app.py
 ```
 
 Then choose `practice_04_05_26` in the app sidebar.
+
+### `results.json` format
+
+The analyzer now writes a versioned JSON object with:
+
+- `schema_version`
+- `dataset_metadata`
+- `records`
+
+Each record may also include a downsampled `trace` payload for UI charting.
+
+The Streamlit app still accepts older legacy files that were just a top-level list of log summaries.
 
 ## Config Notes
 
@@ -147,9 +167,9 @@ Use this to customize:
 
 ## GitHub Setup
 
-This repo is configured so the Streamlit viewer defaults to:
+This repo is configured so the Streamlit viewer defaults to the checked-in `autos_dp_03_30_26` dataset layout under:
 
-[`https://raw.githubusercontent.com/team4099/log_analysis/main/logs/2026vache/results/results.json`](https://raw.githubusercontent.com/team4099/log_analysis/main/logs/2026vache/results/results.json)
+[`https://raw.githubusercontent.com/team4099/log_analysis/main/logs/autos_dp_03_30_26/results/results.json`](https://raw.githubusercontent.com/team4099/log_analysis/main/logs/autos_dp_03_30_26/results/results.json)
 
 That means once `logs/<example name>/results/results.json` is pushed to the repository, that example can be selected in the viewer without any local path edits.
 

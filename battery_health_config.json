@@ -35,6 +35,10 @@
       "fair_max_mohm": 35.0
     }
   },
+  "trace_export": {
+    "enabled": true,
+    "max_points": 400
+  },
   "current_model": {
     "direct_supply_currents": [
       "/Climb/climbSupplyCurrent",

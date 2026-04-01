@@ -28,4 +28,4 @@ battery_results_app_config.local.json
 
 # Vscode
 .devcontainer/
-
+.omx/

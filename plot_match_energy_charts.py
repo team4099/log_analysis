@@ -95,11 +95,11 @@ def component_order(config: dict[str, Any], metrics: list[dict[str, Any]]) -> li
     ]
     seen = set(ordered)
     for metric in metrics:
-        for component_name in metric["mean_stator_current_a"]:
+        for component_name in metric["energy_wh"]:
             if component_name not in seen:
                 ordered.append(component_name)
                 seen.add(component_name)
-        for component_name in metric["energy_wh"]:
+        for component_name in metric["mean_supply_current_a"]:
             if component_name not in seen:
                 ordered.append(component_name)
                 seen.add(component_name)
@@ -155,31 +155,11 @@ def summarize_log_metrics(log_path: Path, config: dict[str, Any]) -> dict[str, A
     if len(voltage_series) < 2:
         return {
             "log_path": log_path,
-            "mean_stator_current_a": {},
+            "mean_supply_current_a": {},
             "energy_wh": {},
             "enabled_duration_s": 0.0,
         }
 
-    stator_component_series = {}
-    for entry_config in config.get("current_model", {}).get("subsystem_breakdown_currents", []):
-        if not isinstance(entry_config, dict):
-            continue
-        label = entry_config.get("label")
-        entry = entry_config.get("entry")
-        if not isinstance(label, str) or not isinstance(entry, str):
-            continue
-        numeric_series = [
-            (timestamp, float(value))
-            for timestamp, value in series.get(entry, [])
-            if isinstance(value, (int, float))
-        ]
-        if numeric_series:
-            stator_component_series[label] = numeric_series
-    stator_component_lookups = {
-        component_name: split_series(component_values)
-        for component_name, component_values in stator_component_series.items()
-        if component_values
-    }
     _, _, supply_component_series, _ = build_estimated_current_series(series, voltage_series, config)
     supply_aliases = supply_label_aliases(config)
     normalized_supply_series: dict[str, list[tuple[int, float]]] = {}
@@ -192,7 +172,7 @@ def summarize_log_metrics(log_path: Path, config: dict[str, Any]) -> dict[str, A
         if component_values
     }
 
-    stator_current_area_by_component = {component_name: 0.0 for component_name in stator_component_lookups}
+    supply_current_area_by_component = {component_name: 0.0 for component_name in supply_component_lookups}
     energy_wh_by_component = {component_name: 0.0 for component_name in supply_component_lookups}
     enabled_duration_s = 0.0
 
@@ -204,27 +184,24 @@ def summarize_log_metrics(log_path: Path, config: dict[str, Any]) -> dict[str, A
         if dt_s <= 0.0:
             continue
         enabled_duration_s += dt_s
-        for component_name, lookup in stator_component_lookups.items():
-            current0_a = component_current_at(lookup, t0)
-            current1_a = component_current_at(lookup, t1)
-            stator_current_area_by_component[component_name] += ((current0_a + current1_a) / 2.0) * dt_s
         for component_name, lookup in supply_component_lookups.items():
             current0_a = component_current_at(lookup, t0)
             current1_a = component_current_at(lookup, t1)
+            supply_current_area_by_component[component_name] += ((current0_a + current1_a) / 2.0) * dt_s
             avg_power_w = ((v0 * current0_a) + (v1 * current1_a)) / 2.0
             energy_wh_by_component[component_name] += avg_power_w * (dt_s / 3600.0)
 
     if enabled_duration_s > 0.0:
-        mean_stator_current_a = {
-            component_name: stator_current_area_by_component[component_name] / enabled_duration_s
-            for component_name in stator_component_lookups
+        mean_supply_current_a = {
+            component_name: supply_current_area_by_component[component_name] / enabled_duration_s
+            for component_name in supply_component_lookups
         }
     else:
-        mean_stator_current_a = {component_name: 0.0 for component_name in stator_component_lookups}
+        mean_supply_current_a = {component_name: 0.0 for component_name in supply_component_lookups}
 
     return {
         "log_path": log_path,
-        "mean_stator_current_a": mean_stator_current_a,
+        "mean_supply_current_a": mean_supply_current_a,
         "energy_wh": energy_wh_by_component,
         "enabled_duration_s": enabled_duration_s,
     }
@@ -238,7 +215,7 @@ def plot_heatmap(
     output_path: Path,
 ) -> None:
     data = [
-        [metric["mean_stator_current_a"].get(component_name, 0.0) for component_name in component_names]
+        [metric["mean_supply_current_a"].get(component_name, 0.0) for component_name in component_names]
         for metric in metrics
     ]
     row_count = max(1, len(match_labels))
@@ -247,9 +224,9 @@ def plot_heatmap(
     fig, ax = plt.subplots(figsize=(fig_width, fig_height))
     image = ax.imshow(data, aspect="auto", cmap="YlOrRd")
     colorbar = fig.colorbar(image, ax=ax)
-    colorbar.set_label("Mean Enabled Stator Current (A)")
+    colorbar.set_label("Mean Enabled Supply Current (A)")
 
-    ax.set_title("Mean Enabled Stator Current by Motor per Match", fontsize=18, weight="bold", pad=16)
+    ax.set_title("Mean Enabled Supply Current by Motor per Match", fontsize=18, weight="bold", pad=16)
     ax.set_xticks(range(len(component_names)))
     ax.set_xticklabels([display_name(name, display_names) for name in component_names], rotation=60, ha="right")
     ax.set_yticks(range(len(match_labels)))
@@ -305,7 +282,7 @@ def plot_energy_bars(
     for index, total in enumerate(totals):
         ax.text(index, total + max(totals, default=0.0) * 0.01, f"{total:.1f}", ha="center", va="bottom", fontsize=10)
 
-    ax.set_title("Estimated Enabled Stator-Based Energy per Match by Motor", fontsize=18, weight="bold", pad=10)
+    ax.set_title("Enabled Energy Consumption per Match by Motor", fontsize=18, weight="bold", pad=10)
     ax.set_ylabel("Total Energy (Wh)")
     ax.set_xticks(x_positions)
     ax.set_xticklabels(match_labels, rotation=45, ha="right")
@@ -340,7 +317,7 @@ def main() -> None:
     component_names = component_order(config, metrics)
     match_labels = [unique_labels[path] for path in sorted_log_paths]
 
-    heatmap_path = output_dir / "stator_current_heatmap.png"
+    heatmap_path = output_dir / "supply_current_heatmap.png"
     energy_path = output_dir / "power_consumption_per_match.png"
     plot_heatmap(match_labels, metrics, component_names, display_names, heatmap_path)
     plot_energy_bars(match_labels, metrics, component_names, display_names, energy_path)
